@@ -4,7 +4,7 @@ VERSION AMÉLIORÉE - Extraction robuste du cookTime depuis schema.org JSON-LD
 """
 
 from flask import Flask, request, jsonify
-from recipe_scrapers import scrape_html
+from recipe_scrapers import HEADERS, scrape_html
 import re
 import unicodedata
 import json
@@ -162,6 +162,60 @@ def extract_time_from_schema(recipe_schema: Dict, time_field: str) -> Optional[i
     return None
 
 
+def extract_core_fields_from_recipe_schema(recipe_schema: Dict) -> Dict:
+    """Extrait titre, ingrédients, instructions et image depuis un objet schema.org Recipe."""
+    data: Dict[str, Any] = {}
+
+    name = recipe_schema.get('name')
+    if name:
+        data['title'] = name
+
+    raw_ingredients = recipe_schema.get('recipeIngredient') or recipe_schema.get('ingredients')
+    if raw_ingredients:
+        items = raw_ingredients if isinstance(raw_ingredients, list) else [raw_ingredients]
+        ingredients = []
+        for item in items:
+            if isinstance(item, str):
+                ingredients.append(item)
+            elif isinstance(item, dict):
+                text = item.get('text') or item.get('name')
+                if text:
+                    ingredients.append(text)
+        if ingredients:
+            data['ingredients'] = ingredients
+
+    instructions = recipe_schema.get('recipeInstructions')
+    if instructions:
+        if isinstance(instructions, str):
+            data['instructions'] = instructions
+        elif isinstance(instructions, list):
+            steps = []
+            for step in instructions:
+                if isinstance(step, str):
+                    steps.append(step)
+                elif isinstance(step, dict):
+                    text = step.get('text') or step.get('name')
+                    if text:
+                        steps.append(text)
+            joined = '\n'.join(steps)
+            if joined:
+                data['instructions'] = joined
+
+    image = recipe_schema.get('image')
+    if isinstance(image, str):
+        data['image'] = image
+    elif isinstance(image, list) and image:
+        first = image[0]
+        if isinstance(first, str):
+            data['image'] = first
+        elif isinstance(first, dict) and first.get('url'):
+            data['image'] = first['url']
+    elif isinstance(image, dict) and image.get('url'):
+        data['image'] = image['url']
+
+    return data
+
+
 def scrape_with_enhanced_schema(url: str) -> Tuple[Any, Dict]:
     """
     Scrape une recette avec extraction améliorée des données schema.org
@@ -172,15 +226,8 @@ def scrape_with_enhanced_schema(url: str) -> Tuple[Any, Dict]:
     Returns:
         Tuple (scraper object, enhanced_data dict)
     """
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, br',
-    }
-    
-    # UN SEUL téléchargement
-    response = requests.get(url, timeout=20, headers=headers)
+    # Headers upstream recipe-scrapers — évite les pages anti-bot tronquées (ex. 750g.com)
+    response = requests.get(url, timeout=20, headers=HEADERS)
     response.raise_for_status()
     html_content = response.text
 
@@ -193,10 +240,14 @@ def scrape_with_enhanced_schema(url: str) -> Tuple[Any, Dict]:
         # Réutiliser le HTML déjà téléchargé — pas de 2e requête HTTP
         json_ld_objects = extract_json_ld(html_content)
         recipe_schema = find_recipe_schema(json_ld_objects)
-        
+        if not recipe_schema:
+            recipe_schema = extract_recipe_with_extruct(html_content, url)
+
         if recipe_schema:
             print(f"✓ Schema.org Recipe trouvé")
-            
+
+            enhanced_data.update(extract_core_fields_from_recipe_schema(recipe_schema))
+
             # Extraire les temps depuis le schema.org
             cook_time = extract_time_from_schema(recipe_schema, 'cookTime')
             prep_time = extract_time_from_schema(recipe_schema, 'prepTime')
@@ -1045,7 +1096,7 @@ def scrape_recipe():
             """Appel sécurisé des méthodes du scraper"""
             try:
                 return getattr(scraper, method_name, lambda: None)()
-            except:
+            except Exception:
                 return None
         
         def safe_call_groups():
@@ -1088,6 +1139,14 @@ def scrape_recipe():
         for key, value in enhanced_data.items():
             if value is not None:
                 result[key] = value
+
+        if not result.get('title') and not result.get('ingredients'):
+            partial = {k: v for k, v in result.items() if v not in [None, [], "", {}]}
+            return jsonify({
+                'success': False,
+                'message': 'No recipe data extracted from URL',
+                'data': partial
+            }), 422
         
         # Parser les ingrédients si demandé
         if parse_ingredients_flag and result.get('ingredients'):
@@ -1146,15 +1205,7 @@ def scrape_recipe_v2():
 
     try:
 
-        headers = {
-            "User-Agent": "Mozilla/5.0"
-        }
-
-        response = requests.get(
-            url,
-            timeout=20,
-            headers=headers
-        )
+        response = requests.get(url, timeout=20, headers=HEADERS)
 
         html_content = response.text
 
