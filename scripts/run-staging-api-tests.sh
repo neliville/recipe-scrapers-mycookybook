@@ -69,6 +69,13 @@ resp=$(curl -s --max-time 45 "$BASE/scrape?webUrl=$(python3 -c "import urllib.pa
 success=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))" 2>/dev/null || echo "False")
 if [[ "$success" == "True" ]]; then ok "GET /scrape Marmiton"; else fail "GET /scrape Marmiton — $(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('message','')[:80])" 2>/dev/null)"; fi
 
+# Scrape 750g (/scrape — régression anti-bot)
+G750_URL="https://www.750g.com/cuisses-de-poulet-et-pomme-de-terre-au-four-r79431.htm"
+resp=$(curl -s --max-time 45 "$BASE/scrape?webUrl=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$G750_URL'))")&language=fr")
+success=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))" 2>/dev/null || echo "False")
+title=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('data',{}).get('title',''))" 2>/dev/null || echo "")
+if [[ "$success" == "True" && -n "$title" ]]; then ok "GET /scrape 750g (title=$title)"; else fail "GET /scrape 750g — $(echo "$resp" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('message',''), d.get('data',{}).get('title',''))" 2>/dev/null)"; fi
+
 echo ""
 echo "============================================================"
 echo "  Résultat : $PASS passés, $FAIL échoués"
