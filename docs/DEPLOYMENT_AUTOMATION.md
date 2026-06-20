@@ -134,7 +134,7 @@ mkdir -p tmp && touch tmp/restart.txt
 
 | Symptôme | Cause probable | Action |
 |---|---|---|
-| `curl: (22) HTTP 401` | Mauvais mot de passe cPanel | Vérifier `O2SWITCH_CPANEL_PASSWORD` (cPanel, pas SSH) |
+| `curl: (60)` / exit code 60 | Certificat SSL cPanel (port 2083) | Déjà géré avec `curl -k` dans le workflow |
 | `dial tcp ... i/o timeout` | Whitelist échouée ou pas propagée | Vérifier logs étape « Whitelist runner IP » ; attendre 65 s |
 | `Permission denied (publickey)` | Clé SSH CI incorrecte | Vérifier `O2SWITCH_SSH_KEY` + clé autorisée dans cPanel SSH Access |
 | Plus d'accès SSH perso | IP personnelle supprimée par erreur | Vérifier `O2SWITCH_KEEP_IPS` ; réajouter via cPanel **Autorisation SSH** |
