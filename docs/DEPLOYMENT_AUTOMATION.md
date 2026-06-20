@@ -40,6 +40,16 @@ Configurer dans **GitHub → Settings → Secrets and variables → Actions → 
 | `O2SWITCH_USER` | `iwob6566` | Utilisateur SSH |
 | `O2SWITCH_PORT` | `22` | Port SSH (vérifier dans cPanel si différent) |
 | `O2SWITCH_SSH_KEY` | clé privée OpenSSH | Clé **dédiée CI** — ne jamais utiliser votre clé personnelle |
+| `O2SWITCH_API_TOKEN` | token cPanel | Token API cPanel (Manage API Tokens) — **requis** pour whitelist pare-feu o2switch |
+| `O2SWITCH_OTP_SECRET` | *(optionnel)* | Secret OTP si la 2FA est activée sur le compte o2switch |
+
+> **Pare-feu o2switch** : par défaut, le port SSH 22 n'accepte que les IP whitelistées. GitHub Actions utilise des IP dynamiques ; le workflow appelle `d9beuD/o2switch-whitelisting` avant le déploiement SSH. Sans `O2SWITCH_API_TOKEN`, la connexion SSH échoue avec `i/o timeout`.
+
+### Créer le token API cPanel
+
+1. cPanel → **Manage API Tokens** → **Create**
+2. Nom : `github-actions-deploy-staging`
+3. Copier le token → secret `O2SWITCH_API_TOKEN`
 
 ---
 
@@ -143,6 +153,7 @@ Préférer `git revert` sur `develop` puis `git push origin develop` pour évite
 | Symptôme | Cause probable | Action |
 |---|---|---|
 | `Permission denied (publickey)` | Clé absente ou mauvaise dans `authorized_keys` / secret | Vérifier clé publique serveur et secret `O2SWITCH_SSH_KEY` |
+| `dial tcp ... i/o timeout` | IP runner GitHub non whitelistée (pare-feu o2switch) | Configurer `O2SWITCH_API_TOKEN` ; vérifier l'étape « Whitelist runner IP » |
 | `bash: .../deploy-staging.sh: No such file` | Bootstrap non fait | `git pull` + `chmod +x` manuel sur le serveur |
 | `git pull` échoue | Credentials Git absents sur le serveur | Vérifier clone SSH ou token HTTPS |
 | Workflow timeout | `pip install` lent | Augmenter `timeout-minutes` dans le workflow |

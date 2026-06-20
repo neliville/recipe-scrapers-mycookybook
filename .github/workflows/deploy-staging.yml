@@ -16,6 +16,17 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - name: Whitelist runner IP on o2switch
+        uses: d9beuD/o2switch-whitelisting@v1
+        with:
+          o2switch_username: ${{ secrets.O2SWITCH_USER }}
+          o2switch_api_token: ${{ secrets.O2SWITCH_API_TOKEN }}
+          o2switch_host: ${{ secrets.O2SWITCH_HOST }}
+          otp_secret: ${{ secrets.O2SWITCH_OTP_SECRET }}
+
+      - name: Wait for firewall propagation
+        run: sleep 65
+
       - name: SSH deploy
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -23,6 +34,7 @@ jobs:
           username: ${{ secrets.O2SWITCH_USER }}
           port: ${{ secrets.O2SWITCH_PORT }}
           key: ${{ secrets.O2SWITCH_SSH_KEY }}
+          timeout: 60s
           command_timeout: 10m
           script: |
             bash /home/iwob6566/apps/recipe-scrapers-mycookybook/scripts/deploy-staging.sh
