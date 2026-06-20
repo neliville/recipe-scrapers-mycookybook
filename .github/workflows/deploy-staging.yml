@@ -32,7 +32,8 @@ jobs:
           BASE="https://${CPANEL_HOST}:2083/frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
 
           cpanel_curl() {
-            curl -sf --max-time 45 -u "${CPANEL_USER}:${CPANEL_PASS}" "$@"
+            # -k : certificat cPanel o2switch (port 2083) non reconnu par les CA GitHub Actions
+            curl -skf --max-time 45 -u "${CPANEL_USER}:${CPANEL_PASS}" "$@"
           }
 
           should_keep() {
