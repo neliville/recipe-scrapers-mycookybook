@@ -57,8 +57,11 @@ unit=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).ge
 if [[ -n "$unit" ]]; then ok "POST /parse-ingredient — unités JSON ($unit)"; else fail "POST /parse-ingredient — unité vide (JSON non chargé?)"; fi
 
 check_http "$BASE/scrape" 400 "GET /scrape sans webUrl"
-check_http "$BASE/parse-ingredient" 400 "POST /parse-ingredient sans body" 
-# Note: curl POST sans body peut retourner 400 ou 415 selon config
+
+resp=$(curl -s -w "\nHTTP:%{http_code}" --max-time 30 -X POST "$BASE/parse-ingredient" \
+    -H "Content-Type: application/json" -d '{}')
+code=$(echo "$resp" | grep HTTP | cut -d: -f2)
+if [[ "$code" == "400" ]]; then ok "POST /parse-ingredient sans ingredient (HTTP 400)"; else fail "POST /parse-ingredient body vide — attendu 400, reçu $code"; fi
 
 # Scrape Marmiton (URL test upstream)
 MARMITON_URL="https://www.marmiton.org/recettes/recette_ratatouille_23223.aspx"
