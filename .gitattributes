@@ -1,0 +1,27 @@
+# Normalisation des fins de ligne — MyCookyBook fork
+# Voir docs/GITATTRIBUTES_RECOMMENDED.md
+
+* text=auto
+
+# Langages et formats texte — forcer LF
+*.py          text eol=lf
+*.yml         text eol=lf
+*.yaml        text eol=lf
+*.md          text eol=lf
+*.json        text eol=lf
+*.sh          text eol=lf
+*.toml        text eol=lf
+*.cfg         text eol=lf
+*.ini         text eol=lf
+*.rst         text eol=lf
+*.html        text eol=lf
+*.testhtml    text eol=lf
+
+# Fichiers binaires — ne pas toucher
+*.png         binary
+*.jpg         binary
+*.jpeg        binary
+*.gif         binary
+*.ico         binary
+*.woff        binary
+*.woff2       binary
