@@ -637,13 +637,19 @@ class MultilingualIngredientParser:
             ]
         }
         
-        # Prépositions à supprimer
+        # Prépositions à supprimer (début de chaîne uniquement)
         self.preposition_patterns = {
-            Language.FR: r"^(?:de|d'|du|des|la|le|les|un|une)\s+",
+            Language.FR: r"^(?:de|du|des|la|le|les|un|une|au|aux)\s+",
             Language.EN: r"^(?:of|the|a|an|some)\s+",
             Language.ES: r"^(?:de|del|la|el|los|las|un|una)\s+",
             Language.DE: r"^(?:von|vom|der|die|das|den|dem|ein|eine)\s+"
         }
+
+        # Mots-mesure français (non unités) : "1 filet d'huile", "1 pincée de sel"
+        self.fr_measure_word_pattern = re.compile(
+            r'^(?:filet|pincée?s?|poignée?s?|goutte?s?|noix?|sachet|cube?s?)\s+',
+            re.IGNORECASE
+        )
     
     def build_unit_map(self) -> Dict[str, str]:
         """Construit un dictionnaire de mapping des unités personnalisées"""
@@ -921,17 +927,31 @@ class MultilingualIngredientParser:
     
     def clean_ingredient_name(self, text: str, language: Language) -> str:
         """Nettoie le nom de l'ingrédient"""
-        # Normaliser les espaces
         text = re.sub(r'\s+', ' ', text).strip()
-        
-        # Supprimer les prépositions en début
-        prep_pattern = self.preposition_patterns.get(language, '')
-        if prep_pattern:
-            text = re.sub(prep_pattern, '', text, flags=re.IGNORECASE)
-        
-        # Supprimer virgules, points et espaces en début/fin
+
+        if language == Language.FR:
+            # Articles partitifs en tête — d'/l' sans espace (ex. d'eau, l'huile)
+            while True:
+                previous = text
+                text = re.sub(
+                    self.preposition_patterns[Language.FR],
+                    '',
+                    text,
+                    count=1,
+                    flags=re.IGNORECASE
+                ).strip()
+                if re.match(r"^d'", text, re.IGNORECASE):
+                    text = text[2:].strip()
+                elif re.match(r"^l'", text, re.IGNORECASE):
+                    text = text[2:].strip()
+                if text == previous:
+                    break
+        else:
+            prep_pattern = self.preposition_patterns.get(language, '')
+            if prep_pattern:
+                text = re.sub(prep_pattern, '', text, flags=re.IGNORECASE)
+
         text = re.sub(r'^[,\.\s]+|[,\.\s]+$', '', text)
-        
         return text.strip()
     
     def parse(self, ingredient_text: str, language: Optional[Language] = None) -> ParsedIngredient:
@@ -964,18 +984,26 @@ class MultilingualIngredientParser:
         
         # 1. Extraire la quantité
         quantity, remaining = self.extract_quantity(remaining)
-        
-        # 2. Extraire l'unité
-        unit, remaining = self.extract_unit(remaining, language)
+
+        # 2. Retirer les mots-mesure français ("1 filet d'huile" → "d'huile")
+        if language == Language.FR and quantity is not None:
+            remaining = self.fr_measure_word_pattern.sub('', remaining, count=1).strip()
+
+        # 3. Extraire l'unité (uniquement si une quantité est présente — évite
+        #    les faux positifs sur épices sans quantité, ex. "Ras el-hanout")
+        if quantity is not None:
+            unit, remaining = self.extract_unit(remaining, language)
+        else:
+            unit = ""
 
         # Localiser le code d'unité dans la langue détectée
         if unit:
             unit = self.unit_localized_labels.get(language, {}).get(unit, unit)
 
-        # 3. Extraire les notes
+        # 4. Extraire les notes
         note, remaining = self.extract_note(remaining, language)
-        
-        # 4. Le reste est le nom de l'ingrédient
+
+        # 5. Le reste est le nom de l'ingrédient
         ingredient_name = self.clean_ingredient_name(remaining, language)
         
         return ParsedIngredient(

@@ -69,7 +69,15 @@ resp=$(curl -s --max-time 45 "$BASE/scrape?webUrl=$(python3 -c "import urllib.pa
 success=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))" 2>/dev/null || echo "False")
 if [[ "$success" == "True" ]]; then ok "GET /scrape Marmiton"; else fail "GET /scrape Marmiton — $(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('message','')[:80])" 2>/dev/null)"; fi
 
-# Scrape 750g (/scrape — régression anti-bot)
+# Parse ingrédients 750g — régression partitifs FR
+resp=$(curl -s --max-time 30 -X POST "$BASE/parse-ingredients" \
+  -H "Content-Type: application/json" \
+  -d '{"ingredients": ["15 cl d'\''eau", "1 filet d'\''huile d'\''olive", "Ras el-hanout"], "language": "fr"}')
+eau=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['ingredients'][0]['ingredient'])" 2>/dev/null || echo "")
+huile=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['ingredients'][1]['ingredient'])" 2>/dev/null || echo "")
+ras=$(echo "$resp" | python3 -c "import sys,json; i=json.load(sys.stdin)['data']['ingredients'][2]; print(i['ingredient'], i['unit'])" 2>/dev/null || echo "")
+if [[ "$eau" == "eau" && "$huile" == "huile d'olive" ]]; then ok "POST /parse-ingredients FR partitifs (eau, huile d'olive)"; else fail "POST /parse-ingredients FR — eau='$eau' huile='$huile'"; fi
+if echo "$ras" | grep -q "Ras el-hanout"; then ok "POST /parse-ingredients épice sans quantité (Ras el-hanout)"; else fail "POST /parse-ingredients Ras el-hanout — $ras"; fi
 G750_URL="https://www.750g.com/cuisses-de-poulet-et-pomme-de-terre-au-four-r79431.htm"
 resp=$(curl -s --max-time 45 "$BASE/scrape?webUrl=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$G750_URL'))")&language=fr")
 success=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success',False))" 2>/dev/null || echo "False")
