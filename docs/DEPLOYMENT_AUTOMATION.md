@@ -99,7 +99,7 @@ Attendu en fin de script : `DEPLOY SUCCESS`
 
 ## Tester le workflow
 
-1. Configurer les 4 secrets GitHub (voir ci-dessus)
+1. Configurer tous les secrets GitHub (voir ci-dessus, dont `O2SWITCH_API_TOKEN`)
 2. Pousser un commit sur `develop` :
 
    ```bash
