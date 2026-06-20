@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Whitelist runner IP on o2switch
-        uses: d9beuD/o2switch-whitelisting@v1
+        uses: d9beuD/o2switch-whitelisting@v1.0.4
         with:
           o2switch_username: ${{ secrets.O2SWITCH_USER }}
           o2switch_api_token: ${{ secrets.O2SWITCH_API_TOKEN }}
