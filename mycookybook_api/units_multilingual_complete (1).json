@@ -1,0 +1,2953 @@
+[
+  {
+    "code": "barquette",
+    "name_fr": "barquette",
+    "name_en": "tray",
+    "name_de": "Schale",
+    "name_pt": "bandeja",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "barquette(s)",
+      "barquettes"
+    ],
+    "aliases_en": [
+      "tray",
+      "trays",
+      "punnet",
+      "container",
+      "tub"
+    ],
+    "aliases_de": [
+      "Schale",
+      "Schalen",
+      "Behälter",
+      "Plastikschale"
+    ],
+    "aliases_pt": [
+      "bandeja",
+      "bandejas",
+      "embalagem",
+      "vasilha"
+    ],
+    "id": "68c6c2d502b97eb0814f57dd",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "bandeja",
+    "aliases_es": [
+      "bandeja",
+      "bandejas",
+      "tarrina",
+      "envase"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "batonnet",
+    "name_fr": "bâtonnet",
+    "name_en": "stick",
+    "name_de": "Stäbchen",
+    "name_pt": "palito",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "batonnets",
+      "bâtonnet",
+      "bâtonnets"
+    ],
+    "aliases_en": [
+      "stick",
+      "sticks"
+    ],
+    "aliases_de": [
+      "Stäbchen"
+    ],
+    "aliases_pt": [
+      "palito",
+      "palitos"
+    ],
+    "id": "68c6c2d502b97eb0814f57d6",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "palito",
+    "aliases_es": [
+      "palito",
+      "palitos"
+    ],
+    "category_es": "informal"
+  },
+  {
+    "code": "boite",
+    "name_fr": "boîte",
+    "name_en": "can",
+    "name_de": "Dose",
+    "name_pt": "lata",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "boite(s)",
+      "boites",
+      "boîte(s)"
+    ],
+    "aliases_en": [
+      "can",
+      "cans",
+      "tin",
+      "tins",
+      "tin can"
+    ],
+    "aliases_de": [
+      "Dose",
+      "Dosen",
+      "Büchse",
+      "Büchsen",
+      "Konserve",
+      "Konserven",
+      "Konservendose",
+      "Blechdose"
+    ],
+    "aliases_pt": [
+      "lata",
+      "latas",
+      "conserva",
+      "conservas"
+    ],
+    "id": "68c6c2d502b97eb0814f57de",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "lata",
+    "aliases_es": [
+      "lata",
+      "latas",
+      "bote",
+      "botes",
+      "conserva"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "bottle",
+    "name_fr": "bouteille",
+    "name_en": "bottle",
+    "name_de": "Flasche",
+    "name_pt": "garrafa",
+    "symbol": "bouteille",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "bouteille",
+      "bouteilles"
+    ],
+    "aliases_en": [
+      "bottle",
+      "bottles",
+      "flask"
+    ],
+    "aliases_de": [
+      "Flasche",
+      "Flaschen",
+      "Fläschchen"
+    ],
+    "aliases_pt": [
+      "garrafa",
+      "garrafas",
+      "frasco"
+    ],
+    "id": "68f633837e81c0ddfbf47245",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "botella",
+    "aliases_es": [
+      "botella",
+      "botellas",
+      "frasco"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "bouquet",
+    "name_fr": "bouquet",
+    "name_en": "bunch",
+    "name_de": "Bund",
+    "name_pt": "molho",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "bouquet(s)",
+      "bouquet(s) garni(s)",
+      "bouquets"
+    ],
+    "aliases_en": [
+      "bunch",
+      "bunches",
+      "bundle",
+      "bouquet",
+      "bouquet garni"
+    ],
+    "aliases_de": [
+      "Bund",
+      "Bunde",
+      "Strauß",
+      "Büschel",
+      "Kräutersträußchen"
+    ],
+    "aliases_pt": [
+      "molho",
+      "molhos",
+      "ramo",
+      "ramos",
+      "maço",
+      "bouquet garni",
+      "ramalhete de ervas"
+    ],
+    "id": "68c6c2d502b97eb0814f57d0",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "ramo",
+    "aliases_es": [
+      "ramo",
+      "ramos",
+      "manojo",
+      "manojos",
+      "atado",
+      "bouquet",
+      "bouquet garni",
+      "ramito de hierbas"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "bouteille",
+    "name_fr": "bouteille",
+    "name_en": "bottle",
+    "name_de": "Flasche",
+    "name_pt": "garrafa",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "bouteille(s)",
+      "bouteilles"
+    ],
+    "aliases_en": [
+      "bottle",
+      "bottles",
+      "flask"
+    ],
+    "aliases_de": [
+      "Flasche",
+      "Flaschen",
+      "Fläschchen"
+    ],
+    "aliases_pt": [
+      "garrafa",
+      "garrafas",
+      "frasco"
+    ],
+    "id": "68c6c2d502b97eb0814f57e0",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "botella",
+    "aliases_es": [
+      "botella",
+      "botellas",
+      "frasco"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "branche",
+    "name_fr": "branche",
+    "name_en": "branch",
+    "name_de": "Ast",
+    "name_pt": "ramo",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "branche(s)",
+      "branches"
+    ],
+    "aliases_en": [
+      "branch",
+      "branches",
+      "sprig",
+      "sprigs",
+      "stem"
+    ],
+    "aliases_de": [
+      "Ast",
+      "Äste",
+      "Zweig",
+      "Zweige"
+    ],
+    "aliases_pt": [
+      "ramo",
+      "ramos",
+      "galho"
+    ],
+    "id": "68c6c2d502b97eb0814f57d2",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "rama",
+    "aliases_es": [
+      "rama",
+      "ramas",
+      "ramita",
+      "ramitas"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "brin",
+    "name_fr": "brin",
+    "name_en": "sprig",
+    "name_de": "Zweig",
+    "name_pt": "raminho",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "brin(s)",
+      "brins"
+    ],
+    "aliases_en": [
+      "sprig",
+      "sprigs",
+      "twig"
+    ],
+    "aliases_de": [
+      "Zweig",
+      "Zweige",
+      "Stängel",
+      "Stiel"
+    ],
+    "aliases_pt": [
+      "raminho",
+      "raminhos",
+      "galho pequeno"
+    ],
+    "id": "68c6c2d502b97eb0814f57cd",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "ramita",
+    "aliases_es": [
+      "ramita",
+      "ramitas",
+      "rama pequeña"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "brique",
+    "name_fr": "brique",
+    "name_en": "carton",
+    "name_de": "Karton",
+    "name_pt": "caixa",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "brique(s)",
+      "briques"
+    ],
+    "aliases_en": [
+      "carton",
+      "cartons",
+      "milk carton",
+      "juice box",
+      "pack",
+      "packs"
+    ],
+    "aliases_de": [
+      "Karton",
+      "Kartons",
+      "Milchkarton",
+      "Tetrapack",
+      "Tetra Pak"
+    ],
+    "aliases_pt": [
+      "caixa",
+      "caixas",
+      "embalagem cartonada",
+      "tetra pak"
+    ],
+    "id": "68c6c2d502b97eb0814f57df",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "tetrabrik",
+    "aliases_es": [
+      "tetrabrik",
+      "tetrabriks",
+      "tetrapak",
+      "brik",
+      "envase",
+      "cartón",
+      "caja"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "bunch",
+    "name_fr": "botte",
+    "name_en": "bunch",
+    "name_de": "Bund",
+    "name_pt": "molho",
+    "symbol": "botte",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "botte",
+      "bottes"
+    ],
+    "aliases_en": [
+      "bunch",
+      "bunches",
+      "bundle"
+    ],
+    "aliases_de": [
+      "Bund",
+      "Bunde",
+      "Bündel"
+    ],
+    "aliases_pt": [
+      "molho",
+      "molhos"
+    ],
+    "id": "68f633837e81c0ddfbf47243",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "ramo",
+    "aliases_es": [
+      "ramo",
+      "ramos",
+      "manojo",
+      "manojos"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "c_a_c",
+    "name_fr": "cuillère à café",
+    "name_en": "tsp",
+    "name_de": "TL",
+    "name_pt": "colher de chá",
+    "symbol": "c.à.c.",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "c a c",
+      "c à c",
+      "c. à c",
+      "c. à c.",
+      "c.à.c.",
+      "cac",
+      "cc",
+      "cuillere a cafe",
+      "cuilleres a cafe",
+      "cuillère a café",
+      "cuillère à café",
+      "cuillères a café",
+      "cuillères à café"
+    ],
+    "aliases_en": [
+      "tsp",
+      "t",
+      "ts",
+      "tspn",
+      "t.",
+      "teaspoon",
+      "teaspoons"
+    ],
+    "aliases_de": [
+      "TL",
+      "Teel.",
+      "Teelöffel"
+    ],
+    "aliases_pt": [
+      "colher de chá",
+      "colheres de chá",
+      "colherinha",
+      "colherzinha"
+    ],
+    "id": "68cecce697fc307c3a574733",
+    "created_date": "2025-09-20T15:48:54.591000",
+    "updated_date": "2025-09-20T15:48:54.591000",
+    "name_es": "cucharadita",
+    "aliases_es": [
+      "cucharadita",
+      "cucharaditas",
+      "cdta",
+      "cdta.",
+      "cucharadita de café",
+      "cucharilla"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "c_a_s",
+    "name_fr": "cuillère à soupe",
+    "name_en": "tbsp",
+    "name_de": "EL",
+    "name_pt": "colher de sopa",
+    "symbol": "c.à.s.",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "c a s",
+      "c à s",
+      "c. à s",
+      "c. à s.",
+      "c.à.s.",
+      "cas",
+      "cs",
+      "cuillere a soupe",
+      "cuilleres a soupe",
+      "cuillère a soupe",
+      "cuillère à soupe",
+      "cuillères a soupe",
+      "cuillères à soupe"
+    ],
+    "aliases_en": [
+      "tbsp",
+      "Tbsp",
+      "T",
+      "TB",
+      "Tb",
+      "tbl",
+      "tbs",
+      "T.",
+      "tablespoon",
+      "tablespoons"
+    ],
+    "aliases_de": [
+      "EL",
+      "Essl.",
+      "Esslöffel"
+    ],
+    "aliases_pt": [
+      "colher de sopa",
+      "colheres de sopa",
+      "colher grande",
+      "colher"
+    ],
+    "id": "68cecce697fc307c3a574734",
+    "created_date": "2025-09-20T15:48:54.591000",
+    "updated_date": "2025-09-20T15:48:54.591000",
+    "name_es": "cucharada",
+    "aliases_es": [
+      "cucharada",
+      "cucharadas",
+      "cda",
+      "cda.",
+      "cucharada sopera",
+      "cucharada de sopa",
+      "cucharada grande"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "can",
+    "name_fr": "boîte",
+    "name_en": "can",
+    "name_de": "Dose",
+    "name_pt": "lata",
+    "symbol": "boîte",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "boîte",
+      "boîtes"
+    ],
+    "aliases_en": [
+      "can",
+      "cans",
+      "tin",
+      "tins"
+    ],
+    "aliases_de": [
+      "Dose",
+      "Dosen",
+      "Büchse",
+      "Büchsen"
+    ],
+    "aliases_pt": [
+      "lata",
+      "latas"
+    ],
+    "id": "68f633837e81c0ddfbf47244",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "lata",
+    "aliases_es": [
+      "lata",
+      "latas",
+      "bote",
+      "botes"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "canette",
+    "name_fr": "canette",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [],
+    "aliases_en": [
+      "canette(s)",
+      "canettes"
+    ],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e1",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "celsius",
+    "name_fr": "degré Celsius",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "°C",
+    "category_fr": "temperature",
+    "category_en": "temperature",
+    "category_de": "Temperatur",
+    "category_pt": "temperatura",
+    "aliases_fr": [
+      "c",
+      "degré celsius",
+      "degrés celsius",
+      "°c"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ed",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "temperatura"
+  },
+  {
+    "code": "cl",
+    "name_fr": "centilitre",
+    "name_en": "cl",
+    "name_de": "cl",
+    "name_pt": "cl",
+    "symbol": "cl",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "cL",
+      "centilitre",
+      "centilitres",
+      "cl",
+      "cl."
+    ],
+    "aliases_en": [
+      "cl",
+      "cL",
+      "centiliter",
+      "centiliters",
+      "centilitre",
+      "centilitres"
+    ],
+    "aliases_de": [
+      "cl",
+      "cL",
+      "Zentiliter"
+    ],
+    "aliases_pt": [
+      "cl",
+      "cL",
+      "centilitro",
+      "centilitros"
+    ],
+    "id": "68c6c2d502b97eb0814f57b8",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "cl",
+    "aliases_es": [
+      "cl",
+      "cL",
+      "centilitro",
+      "centilitros"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "clove",
+    "name_fr": "gousse",
+    "name_en": "clove",
+    "name_de": "Zehe",
+    "name_pt": "dente",
+    "symbol": "gousse",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "gousse",
+      "gousses"
+    ],
+    "aliases_en": [
+      "clove",
+      "cloves",
+      "garlic clove"
+    ],
+    "aliases_de": [
+      "Zehe",
+      "Zehen",
+      "Knoblauchzehe"
+    ],
+    "aliases_pt": [
+      "dente",
+      "dentes"
+    ],
+    "id": "68f633837e81c0ddfbf47242",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "diente",
+    "aliases_es": [
+      "diente",
+      "dientes"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "cm",
+    "name_fr": "centimètre",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "cm",
+    "category_fr": "length",
+    "category_en": "length",
+    "category_de": "Länge",
+    "category_pt": "comprimento",
+    "aliases_fr": [
+      "centimètre",
+      "centimètres",
+      "cm"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e8",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "longitud"
+  },
+  {
+    "code": "cube",
+    "name_fr": "cube",
+    "name_en": "cube",
+    "name_de": "Würfel",
+    "name_pt": "cubo",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "cube(s)",
+      "cubes"
+    ],
+    "aliases_en": [
+      "cube",
+      "cubes",
+      "dice"
+    ],
+    "aliases_de": [
+      "Würfel",
+      "Kubus"
+    ],
+    "aliases_pt": [
+      "cubo",
+      "cubos",
+      "dado",
+      "cubinhos"
+    ],
+    "id": "68c6c2d502b97eb0814f57d3",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "cubo",
+    "aliases_es": [
+      "cubo",
+      "cubos",
+      "dado",
+      "dados",
+      "cubito"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "cube_bouillon",
+    "name_fr": "cube (bouillon)",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "bouillon cube",
+      "cube bouillon",
+      "cube(s) de bouillon"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e6",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "cuillere_a_cafe",
+    "name_fr": "cuillère à café",
+    "name_en": "teaspoon",
+    "name_de": "Teelöffel",
+    "name_pt": "colher de chá",
+    "symbol": "c.à.c.",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "c à c",
+      "c. à c",
+      "c. à c.",
+      "c.à.c.",
+      "cac",
+      "cc",
+      "cuillere a cafe",
+      "cuilleres a cafe",
+      "cuillère a café",
+      "cuillère à café",
+      "cuillères a café",
+      "cuillères à café"
+    ],
+    "aliases_en": [
+      "teaspoon",
+      "teaspoons",
+      "tsp",
+      "t",
+      "ts",
+      "tspn",
+      "t."
+    ],
+    "aliases_de": [
+      "Teelöffel",
+      "TL",
+      "Teel."
+    ],
+    "aliases_pt": [
+      "colher de chá",
+      "colheres de chá",
+      "colherinha",
+      "colherzinha"
+    ],
+    "id": "68cc37e74cfa14d7d55cee81",
+    "created_date": "2025-09-18T16:48:39.930000",
+    "updated_date": "2025-09-18T16:48:39.930000",
+    "name_es": "cucharadita",
+    "aliases_es": [
+      "cucharadita",
+      "cucharaditas",
+      "cdta",
+      "cdta.",
+      "cucharadita de café",
+      "cucharilla"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "cuillere_a_soupe",
+    "name_fr": "cuillère à soupe",
+    "name_en": "tablespoon",
+    "name_de": "Esslöffel",
+    "name_pt": "colher de sopa",
+    "symbol": "c.à.s.",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "c à s",
+      "c. à s",
+      "c. à s.",
+      "c.à.s.",
+      "cas",
+      "cs",
+      "cuillere a soupe",
+      "cuilleres a soupe",
+      "cuillère a soupe",
+      "cuillère à soupe",
+      "cuillères a soupe",
+      "cuillères à soupe"
+    ],
+    "aliases_en": [
+      "tablespoon",
+      "tablespoons",
+      "tbsp",
+      "Tbsp",
+      "T",
+      "TB",
+      "Tb",
+      "tbl",
+      "tbs",
+      "T."
+    ],
+    "aliases_de": [
+      "Esslöffel",
+      "EL",
+      "Essl."
+    ],
+    "aliases_pt": [
+      "colher de sopa",
+      "colheres de sopa",
+      "colher grande",
+      "colher"
+    ],
+    "id": "68cc37e74cfa14d7d55cee82",
+    "created_date": "2025-09-18T16:48:39.930000",
+    "updated_date": "2025-09-18T16:48:39.930000",
+    "name_es": "cucharada",
+    "aliases_es": [
+      "cucharada",
+      "cucharadas",
+      "cda",
+      "cda.",
+      "cucharada sopera",
+      "cucharada de sopa",
+      "cucharada grande"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "cup",
+    "name_fr": "tasse",
+    "name_en": "cup",
+    "name_de": "Tasse",
+    "name_pt": "xícara",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [],
+    "aliases_en": [
+      "cup",
+      "cups",
+      "c",
+      "C"
+    ],
+    "aliases_de": [
+      "Tasse",
+      "Tassen",
+      "Becher"
+    ],
+    "aliases_pt": [
+      "xícara",
+      "xícaras",
+      "chávena",
+      "chávenas",
+      "copo"
+    ],
+    "id": "68c6c2d502b97eb0814f57bf",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "taza",
+    "aliases_es": [
+      "taza",
+      "tazas"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "day",
+    "name_fr": "jour",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "time",
+    "category_en": "time",
+    "category_de": "Zeit",
+    "category_pt": "tempo",
+    "aliases_fr": [
+      "jour",
+      "jours"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ec",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "tiempo"
+  },
+  {
+    "code": "demi",
+    "name_fr": "demi",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "½",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "demi",
+      "moitié"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68cc33491d067da21d29b7a8",
+    "created_date": "2025-09-18T16:28:57.809000",
+    "updated_date": "2025-09-18T16:28:57.809000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "dl",
+    "name_fr": "décilitre",
+    "name_en": "dl",
+    "name_de": "dl",
+    "name_pt": "dl",
+    "symbol": "dl",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "dL",
+      "decilitre",
+      "decilitres",
+      "dl",
+      "dl.",
+      "décilitre",
+      "décilitres"
+    ],
+    "aliases_en": [
+      "dl",
+      "dL",
+      "DL",
+      "deciliter",
+      "deciliters",
+      "decilitre",
+      "decilitres"
+    ],
+    "aliases_de": [
+      "dl",
+      "dL",
+      "Deziliter"
+    ],
+    "aliases_pt": [
+      "dl",
+      "dL",
+      "decilitro",
+      "decilitros"
+    ],
+    "id": "68c6c2d502b97eb0814f57b9",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "dl",
+    "aliases_es": [
+      "dl",
+      "dL",
+      "decilitro",
+      "decilitros"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "fahrenheit",
+    "name_fr": "degré Fahrenheit",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "°F",
+    "category_fr": "temperature",
+    "category_en": "temperature",
+    "category_de": "Temperatur",
+    "category_pt": "temperatura",
+    "aliases_fr": [
+      "degré fahrenheit",
+      "degrés fahrenheit",
+      "f",
+      "°f"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ee",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "temperatura"
+  },
+  {
+    "code": "feuille",
+    "name_fr": "feuille",
+    "name_en": "leaf",
+    "name_de": "Blatt",
+    "name_pt": "folha",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "feuille(s)",
+      "feuilles"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ce",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "filet",
+    "name_fr": "filet (huile)",
+    "name_en": "fillet",
+    "name_de": "Filet",
+    "name_pt": "filé",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "filet(s)"
+    ],
+    "aliases_en": [
+      "fillet",
+      "fillets",
+      "filet",
+      "filets"
+    ],
+    "aliases_de": [
+      "Filet",
+      "Filets",
+      "Filetsstück"
+    ],
+    "aliases_pt": [
+      "filé",
+      "filés",
+      "filete",
+      "filetes",
+      "lombo"
+    ],
+    "id": "68c6c2d502b97eb0814f57c4",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "filete",
+    "aliases_es": [
+      "filete",
+      "filetes",
+      "lomo",
+      "solomillo"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "filet_poisson",
+    "name_fr": "filet (poisson)",
+    "name_en": "fillet",
+    "name_de": "Filet",
+    "name_pt": "filé",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "filet",
+      "filets"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57cc",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "g",
+    "name_fr": "gramme",
+    "name_en": "g",
+    "name_de": "g",
+    "name_pt": "g",
+    "symbol": "g",
+    "category_fr": "mass",
+    "category_en": "mass",
+    "category_de": "Masse",
+    "category_pt": "massa",
+    "aliases_fr": [
+      "g",
+      "g.",
+      "gr"
+    ],
+    "aliases_en": [
+      "g",
+      "gr",
+      "gram",
+      "grams",
+      "gramme",
+      "grammes"
+    ],
+    "aliases_de": [
+      "g",
+      "Gramm"
+    ],
+    "aliases_pt": [
+      "g",
+      "grama",
+      "gramas"
+    ],
+    "id": "68c6c2d502b97eb0814f57b3",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "g",
+    "aliases_es": [
+      "g",
+      "gr",
+      "gramo",
+      "gramos"
+    ],
+    "category_es": "masa"
+  },
+  {
+    "code": "gousse",
+    "name_fr": "gousse",
+    "name_en": "clove",
+    "name_de": "Zehe",
+    "name_pt": "dente",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "gousse(s)",
+      "gousses"
+    ],
+    "aliases_en": [
+      "clove",
+      "cloves",
+      "garlic clove"
+    ],
+    "aliases_de": [
+      "Zehe",
+      "Zehen",
+      "Knoblauchzehe",
+      "Knoblauchzehen"
+    ],
+    "aliases_pt": [
+      "dente",
+      "dentes",
+      "dente de alho"
+    ],
+    "id": "68c6c2d502b97eb0814f57cf",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "diente",
+    "aliases_es": [
+      "diente",
+      "dientes",
+      "diente de ajo"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "goutte",
+    "name_fr": "goutte",
+    "name_en": "drop",
+    "name_de": "Tropfen",
+    "name_pt": "gota",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "goutte",
+      "gouttes"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c2",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "grand_verre",
+    "name_fr": "grand verre",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "g. verre",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "grand verre",
+      "grands verres"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68cc2d5e16eb6eccc6b7b223",
+    "created_date": "2025-09-18T16:03:42.004000",
+    "updated_date": "2025-09-18T16:03:42.004000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "h",
+    "name_fr": "heure",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "h",
+    "category_fr": "time",
+    "category_en": "time",
+    "category_de": "Zeit",
+    "category_pt": "tempo",
+    "aliases_fr": [
+      "h",
+      "heure",
+      "heures"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57eb",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "tiempo"
+  },
+  {
+    "code": "handful",
+    "name_fr": "poignée",
+    "name_en": "handful",
+    "name_de": "Handvoll",
+    "name_pt": "punhado",
+    "symbol": "poignée",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "poignée",
+      "poignées"
+    ],
+    "aliases_en": [
+      "handful",
+      "handfuls"
+    ],
+    "aliases_de": [
+      "Handvoll"
+    ],
+    "aliases_pt": [
+      "puñado",
+      "puñados"
+    ],
+    "id": "68f633837e81c0ddfbf47240",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "inch",
+    "name_fr": "pouce",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "in",
+    "category_fr": "length",
+    "category_en": "length",
+    "category_de": "Länge",
+    "category_pt": "comprimento",
+    "aliases_fr": [
+      "in",
+      "inch",
+      "inches",
+      "pouce",
+      "pouces"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e9",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "longitud"
+  },
+  {
+    "code": "jus",
+    "name_fr": "jus",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "jus",
+      "jus de"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57da",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "kg",
+    "name_fr": "kilogramme",
+    "name_en": "kg",
+    "name_de": "kg",
+    "name_pt": "kg",
+    "symbol": "kg",
+    "category_fr": "mass",
+    "category_en": "mass",
+    "category_de": "Masse",
+    "category_pt": "massa",
+    "aliases_fr": [
+      "kg",
+      "kg.",
+      "kilo"
+    ],
+    "aliases_en": [
+      "kg",
+      "kilo",
+      "kilos",
+      "kilogram",
+      "kilograms",
+      "kilogramme",
+      "kilogrammes"
+    ],
+    "aliases_de": [
+      "kg",
+      "Kilo",
+      "Kilos",
+      "Kilogramm"
+    ],
+    "aliases_pt": [
+      "kg",
+      "quilo",
+      "quilos",
+      "quilograma",
+      "quilogramas"
+    ],
+    "id": "68c6c2d502b97eb0814f57b4",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "kg",
+    "aliases_es": [
+      "kg",
+      "kilo",
+      "kilos",
+      "kilogramo",
+      "kilogramos"
+    ],
+    "category_es": "masa"
+  },
+  {
+    "code": "l",
+    "name_fr": "litre",
+    "name_en": "l",
+    "name_de": "l",
+    "name_pt": "l",
+    "symbol": "l",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "L",
+      "l",
+      "l.",
+      "litre",
+      "litres"
+    ],
+    "aliases_en": [
+      "l",
+      "L",
+      "liter",
+      "liters",
+      "litre",
+      "litres"
+    ],
+    "aliases_de": [
+      "l",
+      "L",
+      "Liter"
+    ],
+    "aliases_pt": [
+      "l",
+      "L",
+      "litro",
+      "litros"
+    ],
+    "id": "68c6c2d502b97eb0814f57ba",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "l",
+    "aliases_es": [
+      "l",
+      "L",
+      "litro",
+      "litros"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "lamelle",
+    "name_fr": "lamelle",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "lamelle",
+      "lamelles"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57d5",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "lb",
+    "name_fr": "livre",
+    "name_en": "lb",
+    "name_de": "lb",
+    "name_pt": "lb",
+    "symbol": "lb",
+    "category_fr": "mass",
+    "category_en": "mass",
+    "category_de": "Masse",
+    "category_pt": "massa",
+    "aliases_fr": [
+      "lb",
+      "lbs",
+      "livre",
+      "livres"
+    ],
+    "aliases_en": [
+      "lb",
+      "lbs",
+      "pound",
+      "pounds",
+      "#"
+    ],
+    "aliases_de": [
+      "lb",
+      "Pfund"
+    ],
+    "aliases_pt": [
+      "lb",
+      "libra",
+      "libras"
+    ],
+    "id": "68c6c2d502b97eb0814f57b6",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "lb",
+    "aliases_es": [
+      "lb",
+      "libra",
+      "libras"
+    ],
+    "category_es": "masa"
+  },
+  {
+    "code": "louche",
+    "name_fr": "louche",
+    "name_en": "ladle",
+    "name_de": "Schöpfkelle",
+    "name_pt": "concha",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "louche",
+      "louches"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c1",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "mg",
+    "name_fr": "milligramme",
+    "name_en": "mg",
+    "name_de": "mg",
+    "name_pt": "mg",
+    "symbol": "mg",
+    "category_fr": "mass",
+    "category_en": "mass",
+    "category_de": "Masse",
+    "category_pt": "massa",
+    "aliases_fr": [
+      "mg"
+    ],
+    "aliases_en": [
+      "mg",
+      "milligram",
+      "milligrams",
+      "milligramme",
+      "milligrammes"
+    ],
+    "aliases_de": [
+      "mg",
+      "Milligramm"
+    ],
+    "aliases_pt": [
+      "mg",
+      "miligrama",
+      "miligramas"
+    ],
+    "id": "68c6c2d502b97eb0814f57b2",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "mg",
+    "aliases_es": [
+      "mg",
+      "miligramo",
+      "miligramos"
+    ],
+    "category_es": "masa"
+  },
+  {
+    "code": "min",
+    "name_fr": "minute",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "min",
+    "category_fr": "time",
+    "category_en": "time",
+    "category_de": "Zeit",
+    "category_pt": "tempo",
+    "aliases_fr": [
+      "min",
+      "minute",
+      "minutes"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ea",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "tiempo"
+  },
+  {
+    "code": "ml",
+    "name_fr": "millilitre",
+    "name_en": "ml",
+    "name_de": "ml",
+    "name_pt": "ml",
+    "symbol": "ml",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "mL",
+      "millilitre",
+      "millilitres",
+      "ml",
+      "ml."
+    ],
+    "aliases_en": [
+      "ml",
+      "mL",
+      "milliliter",
+      "milliliters",
+      "millilitre",
+      "millilitres"
+    ],
+    "aliases_de": [
+      "ml",
+      "mL",
+      "Milliliter"
+    ],
+    "aliases_pt": [
+      "ml",
+      "mL",
+      "mililitro",
+      "mililitros"
+    ],
+    "id": "68c6c2d502b97eb0814f57b7",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "ml",
+    "aliases_es": [
+      "ml",
+      "mL",
+      "mililitro",
+      "mililitros"
+    ],
+    "category_es": "volumen"
+  },
+  {
+    "code": "mm",
+    "name_fr": "millimètre",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "mm",
+    "category_fr": "length",
+    "category_en": "length",
+    "category_de": "Länge",
+    "category_pt": "comprimento",
+    "aliases_fr": [
+      "millimètre",
+      "millimètres",
+      "mm"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e7",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "longitud"
+  },
+  {
+    "code": "morceau",
+    "name_fr": "morceau",
+    "name_en": "piece",
+    "name_de": "Stück",
+    "name_pt": "pedaço",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "morceau",
+      "morceaux"
+    ],
+    "aliases_en": [
+      "piece",
+      "pieces",
+      "chunk",
+      "chunks",
+      "bit",
+      "bits"
+    ],
+    "aliases_de": [
+      "Stück",
+      "Stücke",
+      "Brocken"
+    ],
+    "aliases_pt": [
+      "pedaço",
+      "pedaços",
+      "bocado",
+      "porção"
+    ],
+    "id": "68c6c2d502b97eb0814f57ca",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "trozo",
+    "aliases_es": [
+      "trozo",
+      "trozos",
+      "pedazo",
+      "pedazos",
+      "porción"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "noix",
+    "name_fr": "noix (beurre)",
+    "name_en": "knob",
+    "name_de": "Nuss",
+    "name_pt": "noz",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "noisette",
+      "noisettes",
+      "noix"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c5",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "oz",
+    "name_fr": "once",
+    "name_en": "oz",
+    "name_de": "oz",
+    "name_pt": "oz",
+    "symbol": "oz",
+    "category_fr": "mass",
+    "category_en": "mass",
+    "category_de": "Masse",
+    "category_pt": "massa",
+    "aliases_fr": [
+      "once",
+      "onces",
+      "oz",
+      "oz."
+    ],
+    "aliases_en": [
+      "oz",
+      "oz.",
+      "ounce",
+      "ounces"
+    ],
+    "aliases_de": [
+      "oz",
+      "Unze",
+      "Unzen"
+    ],
+    "aliases_pt": [
+      "oz",
+      "onça",
+      "onças"
+    ],
+    "id": "68c6c2d502b97eb0814f57b5",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "oz",
+    "aliases_es": [
+      "oz",
+      "onza",
+      "onzas"
+    ],
+    "category_es": "masa"
+  },
+  {
+    "code": "packet",
+    "name_fr": "paquet",
+    "name_en": "packet",
+    "name_de": "Packung",
+    "name_pt": "pacote",
+    "symbol": "paquet",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "paquet",
+      "paquets"
+    ],
+    "aliases_en": [
+      "packet",
+      "packets"
+    ],
+    "aliases_de": [
+      "Packung",
+      "Packungen"
+    ],
+    "aliases_pt": [
+      "paquete",
+      "paquetes"
+    ],
+    "id": "68f633837e81c0ddfbf47246",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "paquet",
+    "name_fr": "paquet",
+    "name_en": "package",
+    "name_de": "Paket",
+    "name_pt": "pacote",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "paquet(s)",
+      "paquets"
+    ],
+    "aliases_en": [
+      "package",
+      "packages",
+      "packet",
+      "packets",
+      "pack",
+      "packs"
+    ],
+    "aliases_de": [
+      "Paket",
+      "Pakete",
+      "Packung",
+      "Packungen",
+      "Päckchen"
+    ],
+    "aliases_pt": [
+      "pacote",
+      "pacotes",
+      "embalagem",
+      "encomenda"
+    ],
+    "id": "68c6c2d502b97eb0814f57dc",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "paquete",
+    "aliases_es": [
+      "paquete",
+      "paquetes",
+      "envoltorio",
+      "bulto",
+      "envase"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "pave",
+    "name_fr": "pavé",
+    "name_en": "steak",
+    "name_de": "Steak",
+    "name_pt": "posta",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "pavé(s)",
+      "pavés"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57cb",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "petit_verre",
+    "name_fr": "petit verre",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "p. verre",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "petit verre",
+      "petits verres"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68cc2d5e16eb6eccc6b7b222",
+    "created_date": "2025-09-18T16:03:42.004000",
+    "updated_date": "2025-09-18T16:03:42.004000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "piece",
+    "name_fr": "pièce",
+    "name_en": "piece",
+    "name_de": "Stück",
+    "name_pt": "peça",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "St.",
+      "pc",
+      "pce",
+      "pcs",
+      "pièce",
+      "pièces",
+      "unité",
+      "unités"
+    ],
+    "aliases_en": [
+      "piece",
+      "pieces",
+      "pce",
+      "pc"
+    ],
+    "aliases_de": [
+      "Stück",
+      "Stücke",
+      "St."
+    ],
+    "aliases_pt": [
+      "peça",
+      "peças",
+      "unidade",
+      "unidades"
+    ],
+    "id": "68c6c2d502b97eb0814f57c6",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "pieza",
+    "aliases_es": [
+      "pieza",
+      "piezas",
+      "unidad",
+      "unidades"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "pincee",
+    "name_fr": "pincée",
+    "name_en": "pinch",
+    "name_de": "Prise",
+    "name_pt": "pitada",
+    "symbol": "pincée",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "pincee",
+      "pincees",
+      "pincée",
+      "pincées"
+    ],
+    "aliases_en": [
+      "pinch",
+      "pinches",
+      "dash",
+      "smidgen"
+    ],
+    "aliases_de": [
+      "Prise",
+      "Prisen",
+      "Messerspitze",
+      "Msp."
+    ],
+    "aliases_pt": [
+      "pitada",
+      "pitadas",
+      "uma pontinha"
+    ],
+    "id": "68cc37e74cfa14d7d55cee85",
+    "created_date": "2025-09-18T16:48:39.930000",
+    "updated_date": "2025-09-18T16:48:39.931000",
+    "name_es": "pizca",
+    "aliases_es": [
+      "pizca",
+      "pizcas",
+      "al gusto"
+    ],
+    "category_es": "informal"
+  },
+  {
+    "code": "pinch",
+    "name_fr": "pincée",
+    "name_en": "pinch",
+    "name_de": "Prise",
+    "name_pt": "pitada",
+    "symbol": "pincée",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "pincée",
+      "pincées"
+    ],
+    "aliases_en": [
+      "pinch",
+      "pinches"
+    ],
+    "aliases_de": [
+      "Prise",
+      "Prisen"
+    ],
+    "aliases_pt": [
+      "pizca",
+      "pizcas"
+    ],
+    "id": "68f633837e81c0ddfbf4723f",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "plaquette",
+    "name_fr": "plaquette",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "plaquette(s)",
+      "plaquettes"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e5",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "pointe",
+    "name_fr": "pointe",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "pointe(s)"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57d7",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "informal"
+  },
+  {
+    "code": "portion",
+    "name_fr": "portion",
+    "name_en": "portion",
+    "name_de": "Portion",
+    "name_pt": "porção",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "portion",
+      "portions"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c8",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "pot",
+    "name_fr": "pot",
+    "name_en": "jar",
+    "name_de": "Glas",
+    "name_pt": "pote",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "pot(s)",
+      "pots"
+    ],
+    "aliases_en": [
+      "jar",
+      "jars",
+      "pot",
+      "pots",
+      "canning jar"
+    ],
+    "aliases_de": [
+      "Glas",
+      "Gläser",
+      "Einmachglas",
+      "Marmeladenglas"
+    ],
+    "aliases_pt": [
+      "pote",
+      "potes",
+      "frasco",
+      "frascos",
+      "jarra"
+    ],
+    "id": "68c6c2d502b97eb0814f57e2",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "tarro",
+    "aliases_es": [
+      "tarro",
+      "tarros",
+      "frasco",
+      "frascos",
+      "bote",
+      "botes",
+      "pote"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "quartier",
+    "name_fr": "quartier",
+    "name_en": "wedge",
+    "name_de": "Spalte",
+    "name_pt": "gajo",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "quartier",
+      "quartiers"
+    ],
+    "aliases_en": [
+      "wedge",
+      "wedges",
+      "quarter",
+      "quarters",
+      "segment",
+      "section"
+    ],
+    "aliases_de": [
+      "Spalte",
+      "Spalten",
+      "Schnitz",
+      "Stück",
+      "Zitronenspalte"
+    ],
+    "aliases_pt": [
+      "gajo",
+      "gajos",
+      "fatia",
+      "segmento"
+    ],
+    "id": "68c6c2d502b97eb0814f57d8",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "gajo",
+    "aliases_es": [
+      "gajo",
+      "gajos",
+      "rodaja",
+      "trozo",
+      "cuña"
+    ],
+    "category_es": "informal"
+  },
+  {
+    "code": "rondelle",
+    "name_fr": "rondelle",
+    "name_en": "round",
+    "name_de": "Scheibe",
+    "name_pt": "rodela",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "rondelle",
+      "rondelles"
+    ],
+    "aliases_en": [
+      "round",
+      "rounds",
+      "round slice",
+      "disc",
+      "circle",
+      "slice"
+    ],
+    "aliases_de": [
+      "Scheibe",
+      "Scheiben",
+      "runde Scheibe"
+    ],
+    "aliases_pt": [
+      "rodela",
+      "rodelas",
+      "fatia redonda"
+    ],
+    "id": "68c6c2d502b97eb0814f57d4",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "rodaja",
+    "aliases_es": [
+      "rodaja",
+      "rodajas",
+      "rueda",
+      "disco"
+    ],
+    "category_es": "informal"
+  },
+  {
+    "code": "sachet",
+    "name_fr": "sachet",
+    "name_en": "sachet",
+    "name_de": "Beutel",
+    "name_pt": "saqueta",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "sachet(s)",
+      "sachets"
+    ],
+    "aliases_en": [
+      "sachet",
+      "sachets",
+      "bag",
+      "bags",
+      "packet",
+      "packets",
+      "pouch"
+    ],
+    "aliases_de": [
+      "Beutel",
+      "Tüte",
+      "Tüten",
+      "Sack",
+      "Tütchen"
+    ],
+    "aliases_pt": [
+      "saqueta",
+      "saquetas",
+      "sachê",
+      "sachês",
+      "saco",
+      "sacos",
+      "sacola",
+      "bolsa"
+    ],
+    "id": "68c6c2d502b97eb0814f57db",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "sobre",
+    "aliases_es": [
+      "sobre",
+      "sobres",
+      "bolsa",
+      "bolsas",
+      "bolsita",
+      "bolsitas",
+      "saco"
+    ],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "slice",
+    "name_fr": "tranche",
+    "name_en": "slice",
+    "name_de": "Scheibe",
+    "name_pt": "fatia",
+    "symbol": "tranche",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "tranche",
+      "tranches"
+    ],
+    "aliases_en": [
+      "slice",
+      "slices"
+    ],
+    "aliases_de": [
+      "Scheibe",
+      "Scheiben"
+    ],
+    "aliases_pt": [
+      "rodaja",
+      "rodajas"
+    ],
+    "id": "68f633837e81c0ddfbf47241",
+    "created_date": "2025-10-20T13:05:07.662000",
+    "updated_date": "2025-10-20T13:05:07.662000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "tablette",
+    "name_fr": "tablette",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "tablette(s)",
+      "tablettes"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e4",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "tasse",
+    "name_fr": "tasse",
+    "name_en": "cup",
+    "name_de": "Tasse",
+    "name_pt": "xícara",
+    "symbol": "tasse",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [],
+    "aliases_en": [],
+    "aliases_de": [
+      "tasse",
+      "tasses"
+    ],
+    "aliases_pt": [],
+    "id": "68cc37e74cfa14d7d55cee83",
+    "created_date": "2025-09-18T16:48:39.930000",
+    "updated_date": "2025-09-18T16:48:39.930000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "tbsp",
+    "name_fr": "cuillère à soupe",
+    "name_en": "tablespoon",
+    "name_de": "Esslöffel",
+    "name_pt": "colher de sopa",
+    "symbol": "càs",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "EL",
+      "c a s",
+      "c a soupe",
+      "c à s",
+      "c à soupe",
+      "c. à s.",
+      "c. à soupe",
+      "c.a.s",
+      "c.s.",
+      "cas",
+      "cda",
+      "cs",
+      "cuillerée à soupe",
+      "cuillère à soupe",
+      "cuillères à soupe",
+      "càs",
+      "tbsp"
+    ],
+    "aliases_en": [
+      "tablespoon",
+      "tablespoons"
+    ],
+    "aliases_de": [
+      "Esslöffel"
+    ],
+    "aliases_pt": [
+      "cucharada",
+      "cucharadas"
+    ],
+    "id": "68c6c2d502b97eb0814f57bc",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "tdes",
+    "name_fr": "cuillère à dessert",
+    "name_en": "dessert spoon",
+    "name_de": "Dessertlöffel",
+    "name_pt": "colher de sobremesa",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "c a dessert",
+      "c à dessert",
+      "c. à dessert"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57be",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "tete",
+    "name_fr": "tête",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "tête(s)",
+      "têtes"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57d1",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "thermostat",
+    "name_fr": "thermostat (four)",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "TH",
+    "category_fr": "temperature",
+    "category_en": "temperature",
+    "category_de": "Temperatur",
+    "category_pt": "temperatura",
+    "aliases_fr": [
+      "th",
+      "thermostat(s)"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57ef",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "temperatura"
+  },
+  {
+    "code": "trait",
+    "name_fr": "trait",
+    "name_en": "dash",
+    "name_de": "Spritzer",
+    "name_pt": "traço",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "dash",
+      "dashes",
+      "trait"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c3",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "tranche",
+    "name_fr": "tranche",
+    "name_en": "slice",
+    "name_de": "Scheibe",
+    "name_pt": "fatia",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "tranche",
+      "tranches"
+    ],
+    "aliases_en": [
+      "slice",
+      "slices",
+      "rasher",
+      "sliver"
+    ],
+    "aliases_de": [
+      "Scheibe",
+      "Scheiben",
+      "Schnitte"
+    ],
+    "aliases_pt": [
+      "fatia",
+      "fatias",
+      "talhada",
+      "lasca",
+      "rodela"
+    ],
+    "id": "68c6c2d502b97eb0814f57c9",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "rebanada",
+    "aliases_es": [
+      "rebanada",
+      "rebanadas",
+      "rodaja",
+      "loncha",
+      "lonja",
+      "tajada"
+    ],
+    "category_es": "conteo"
+  },
+  {
+    "code": "tsp",
+    "name_fr": "cuillère à café",
+    "name_en": "teaspoon",
+    "name_de": "Teelöffel",
+    "name_pt": "colher de chá",
+    "symbol": "cc",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "TL",
+      "c a c",
+      "c a cafe",
+      "c à c",
+      "c à café",
+      "c. à c.",
+      "c. à café",
+      "c.a.c",
+      "c.c.",
+      "cac",
+      "cc",
+      "cdita",
+      "cuillerée à café",
+      "cuillère à café",
+      "cuillères à café",
+      "tsp"
+    ],
+    "aliases_en": [
+      "teaspoon",
+      "teaspoons"
+    ],
+    "aliases_de": [
+      "Teelöffel"
+    ],
+    "aliases_pt": [
+      "cucharadita",
+      "cucharaditas"
+    ],
+    "id": "68c6c2d502b97eb0814f57bb",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "tstea",
+    "name_fr": "cuillère à thé",
+    "name_en": "teaspoon",
+    "name_de": "Teelöffel",
+    "name_pt": "colher de chá",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "c a the",
+      "c à thé",
+      "c. à thé"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57bd",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "unite",
+    "name_fr": "unité",
+    "name_en": "unit",
+    "name_de": "Einheit",
+    "name_pt": "unidade",
+    "symbol": "",
+    "category_fr": "count",
+    "category_en": "count",
+    "category_de": "Anzahl",
+    "category_pt": "contagem",
+    "aliases_fr": [
+      "unité",
+      "unités"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c7",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "conteo"
+  },
+  {
+    "code": "verre",
+    "name_fr": "verre",
+    "name_en": "glass",
+    "name_de": "Glas",
+    "name_pt": "copo",
+    "symbol": "",
+    "category_fr": "volume",
+    "category_en": "volume",
+    "category_de": "Volumen",
+    "category_pt": "volume",
+    "aliases_fr": [
+      "verre",
+      "verres"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57c0",
+    "created_date": "2025-09-14T13:27:49.330000",
+    "updated_date": "2025-09-14T13:27:49.330000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "volumen"
+  },
+  {
+    "code": "yaourt",
+    "name_fr": "yaourt (pot de)",
+    "name_en": "",
+    "name_de": "",
+    "name_pt": "",
+    "symbol": "",
+    "category_fr": "container",
+    "category_en": "container",
+    "category_de": "Behälter",
+    "category_pt": "recipiente",
+    "aliases_fr": [
+      "pot de yaourt",
+      "yaourt(s)",
+      "yaourts"
+    ],
+    "aliases_en": [],
+    "aliases_de": [],
+    "aliases_pt": [],
+    "id": "68c6c2d502b97eb0814f57e3",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "",
+    "aliases_es": [],
+    "category_es": "recipiente"
+  },
+  {
+    "code": "zeste",
+    "name_fr": "zeste",
+    "name_en": "zest",
+    "name_de": "Zeste",
+    "name_pt": "raspa",
+    "symbol": "",
+    "category_fr": "informal",
+    "category_en": "informal",
+    "category_de": "informell",
+    "category_pt": "informal",
+    "aliases_fr": [
+      "zeste",
+      "zestes"
+    ],
+    "aliases_en": [
+      "zest",
+      "rind",
+      "peel"
+    ],
+    "aliases_de": [
+      "Zeste",
+      "Zesten",
+      "Schale",
+      "Abrieb",
+      "Zitronenschale"
+    ],
+    "aliases_pt": [
+      "raspa",
+      "raspas",
+      "casca raspada",
+      "raladura"
+    ],
+    "id": "68c6c2d502b97eb0814f57d9",
+    "created_date": "2025-09-14T13:27:49.331000",
+    "updated_date": "2025-09-14T13:27:49.331000",
+    "name_es": "ralladura",
+    "aliases_es": [
+      "ralladura",
+      "ralladuras",
+      "cáscara rallada",
+      "piel rallada"
+    ],
+    "category_es": "informal"
+  }
+]
