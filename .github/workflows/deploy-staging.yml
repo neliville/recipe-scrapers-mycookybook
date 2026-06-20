@@ -1,0 +1,28 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to o2switch staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: SSH deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.O2SWITCH_HOST }}
+          username: ${{ secrets.O2SWITCH_USER }}
+          port: ${{ secrets.O2SWITCH_PORT }}
+          key: ${{ secrets.O2SWITCH_SSH_KEY }}
+          command_timeout: 10m
+          script: |
+            bash /home/iwob6566/apps/recipe-scrapers-mycookybook/scripts/deploy-staging.sh
