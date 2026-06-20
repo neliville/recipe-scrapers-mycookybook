@@ -16,13 +16,75 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - name: Get runner public IP
+        id: ip
+        uses: haythem/public-ip@v1.3
+
       - name: Whitelist runner IP on o2switch
-        uses: d9beuD/o2switch-whitelisting@v1.0.4
-        with:
-          o2switch_username: ${{ secrets.O2SWITCH_USER }}
-          o2switch_api_token: ${{ secrets.O2SWITCH_API_TOKEN }}
-          o2switch_host: ${{ secrets.O2SWITCH_HOST }}
-          otp_secret: ${{ secrets.O2SWITCH_OTP_SECRET }}
+        env:
+          CPANEL_HOST: ${{ secrets.O2SWITCH_HOST }}
+          CPANEL_USER: ${{ secrets.O2SWITCH_USER }}
+          CPANEL_PASS: ${{ secrets.O2SWITCH_CPANEL_PASSWORD }}
+          KEEP_IPS: ${{ secrets.O2SWITCH_KEEP_IPS }}
+          RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
+        run: |
+          set -euo pipefail
+          BASE="https://${CPANEL_HOST}:2083/frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
+
+          cpanel_curl() {
+            curl -sf --max-time 45 -u "${CPANEL_USER}:${CPANEL_PASS}" "$@"
+          }
+
+          should_keep() {
+            local ip="$1"
+            local k
+            IFS=',' read -ra KEEP_ARR <<< "${KEEP_IPS}"
+            for k in "${KEEP_ARR[@]}"; do
+              k="${k// /}"
+              [[ -n "$k" && "$ip" == "$k" ]] && return 0
+            done
+            [[ "$ip" == "$RUNNER_IP" ]] && return 0
+            return 1
+          }
+
+          remove_ip() {
+            local ip="$1"
+            echo "Removing stale whitelist entry: ${ip}"
+            cpanel_curl "${BASE}?r=remove&address=${ip}&direction=in&port=22" || true
+            sleep 2
+            cpanel_curl "${BASE}?r=remove&address=${ip}&direction=out&port=22" || true
+            sleep 2
+          }
+
+          echo "Runner IP: ${RUNNER_IP}"
+          RESPONSE=$(cpanel_curl "${BASE}?r=list")
+          echo "Whitelist response (truncated): $(echo "$RESPONSE" | head -c 400)"
+
+          UNIQUE_IPS=$(echo "$RESPONSE" | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          ips = sorted({item['address'] for item in data.get('data', {}).get('list', [])})
+          print('\n'.join(ips))
+          ")
+
+          while IFS= read -r address; do
+            [[ -z "$address" ]] && continue
+            if ! should_keep "$address"; then
+              remove_ip "$address"
+            fi
+          done <<< "$UNIQUE_IPS"
+
+          if echo "$UNIQUE_IPS" | grep -qx "$RUNNER_IP"; then
+            echo "Runner IP already whitelisted"
+          else
+            echo "Adding runner IP: ${RUNNER_IP}"
+            cpanel_curl -X POST \
+              -d "whitelist[address]=${RUNNER_IP}" \
+              -d "whitelist[port]=22" \
+              "${BASE}?r=add"
+          fi
+
+          echo "Whitelist OK"
 
       - name: Wait for firewall propagation
         run: sleep 65
