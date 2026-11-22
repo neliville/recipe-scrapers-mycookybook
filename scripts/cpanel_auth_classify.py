@@ -155,25 +155,21 @@ def _unique(rows):
 
 
 def plan_whitelist(entries, runner_ip, keep_ips, ssh_port="22", quota=5):
+    """Decide whether the runner can be added without deleting any address.
+
+    An address absent from O2SWITCH_KEEP_IPS is not evidence that it is an old
+    runner. Manual SSH exceptions are indistinguishable from them, so this
+    first staging deploy never removes a whitelist row.
+    """
     if not _ipv4(runner_ip):
-        return {"action": "invalid_runner", "remove": []}
-    protected = _keep_set(keep_ips)
+        return {"action": "invalid_runner", "remove": [], "manual_cleanup_required": False}
+    _keep_set(keep_ips)
     rows = _port_rows(entries, ssh_port)
     if any(row["address"] == runner_ip for row in rows):
-        return {"action": "already_present", "remove": []}
-    unique = _unique(rows)
-    if len(unique) < quota:
-        return {"action": "add", "remove": []}
-    stale = [address for address in unique if address not in protected and address != runner_ip]
-    needed = len(unique) - (quota - 1)
-    if needed < 1 or len(stale) < needed:
-        return {"action": "quota_blocked", "remove": []}
-    chosen = set(stale[:needed])
-    remove = [row for row in rows if row["address"] in chosen]
-    for row in remove:
-        if row["address"] in protected or row["address"] == runner_ip:
-            return {"action": "quota_blocked", "remove": []}
-    return {"action": "prune_then_add", "remove": remove}
+        return {"action": "already_present", "remove": [], "manual_cleanup_required": False}
+    if len(_unique(rows)) < quota:
+        return {"action": "add", "remove": [], "manual_cleanup_required": False}
+    return {"action": "quota_blocked", "remove": [], "manual_cleanup_required": True}
 
 
 def diagnose_mutation(http_code, curl_exit, body):
@@ -245,7 +241,9 @@ def main(argv=None):
                 for row in plan["remove"]:
                     handle.write("{0}\t{1}\n".format(row["address"], row["direction"]))
         sys.stdout.write("action={0}\n".format(plan["action"]))
-        return 0 if plan["action"] in {"already_present", "add", "prune_then_add"} else 1
+        if plan["manual_cleanup_required"]:
+            sys.stdout.write("manual_cleanup_required\n")
+        return 0 if plan["action"] in {"already_present", "add"} else 1
     if args.phase == "mutation":
         label = diagnose_mutation(http_code, curl_exit, body)
         sys.stdout.write(format_label(label))

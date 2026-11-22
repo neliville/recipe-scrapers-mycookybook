@@ -75,15 +75,12 @@ class WhitelistPlanTests(unittest.TestCase):
         self.assertEqual(plan["action"], "add")
         self.assertEqual(plan["remove"], [])
 
-    def test_protected_address_is_never_removed(self):
+    def test_quota_full_with_unknown_addresses_is_not_pruned(self):
         full = entries(PROTECTED, STALE, "203.0.113.40", "203.0.113.50", "203.0.113.60")
-        plan = diag.plan_whitelist(full, RUNNER, PROTECTED)
-        self.assertEqual(plan["action"], "prune_then_add")
-        removed = {row["address"] for row in plan["remove"]}
-        self.assertNotIn(PROTECTED, removed)
-        self.assertNotIn(RUNNER, removed)
-        self.assertTrue(removed)
-        self.assertTrue(all(row["direction"] in {"in", "out"} for row in plan["remove"]))
+        plan = diag.plan_whitelist(full, RUNNER, "")
+        self.assertEqual(plan["action"], "quota_blocked")
+        self.assertEqual(plan["remove"], [])
+        self.assertTrue(plan["manual_cleanup_required"])
 
     def test_quota_blocked_when_only_protected_addresses_remain(self):
         full = entries(
@@ -98,6 +95,7 @@ class WhitelistPlanTests(unittest.TestCase):
         )))
         self.assertEqual(plan["action"], "quota_blocked")
         self.assertEqual(plan["remove"], [])
+        self.assertTrue(plan["manual_cleanup_required"])
 
     def test_add_refused_and_delete_failure(self):
         refused = json.dumps({"success": False, "message": "denied"}).encode()
@@ -136,6 +134,10 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertNotIn("|| true", text)
         self.assertNotIn("head -c", text)
         self.assertNotIn("sleep 65", text)
+        self.assertNotIn("r=remove", text)
+        self.assertNotIn("prune_then_add", text)
+        self.assertIn("manual_cleanup_required", text)
+        self.assertNotIn("if: always()", text)
 
 
 if __name__ == "__main__":
