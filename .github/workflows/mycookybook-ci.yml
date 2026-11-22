@@ -50,6 +50,9 @@ jobs:
       - name: Check dependencies
         run: pip check
 
+      - name: cPanel whitelist planner tests
+        run: python -m unittest discover -s scripts -t scripts -p 'test_cpanel_whitelist.py'
+
       - name: Flask contract tests
         run: python -m unittest discover -s mycookybook_api/tests -t .
 
