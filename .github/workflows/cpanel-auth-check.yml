@@ -29,18 +29,38 @@ jobs:
             exit 1
           fi
           echo "secret_present=yes"
-          body=$(mktemp)
+          login_body=$(mktemp)
+          list_body=$(mktemp)
+          cookie=$(mktemp)
+          token=$(mktemp)
           err=$(mktemp)
-          trap 'rm -f "$body" "$err"' EXIT
+          chmod 600 "$login_body" "$list_body" "$cookie" "$token" "$err"
+          trap 'rm -f "$login_body" "$list_body" "$cookie" "$token" "$err"' EXIT
+
           set +e
-          http_code=$(
-            curl -s --max-time 45 -o "$body" -w '%{http_code}' \
-              --user "${CPANEL_USER}:${CPANEL_PASS}" \
-              -- "https://${CPANEL_HOST}:2083/frontend/o2switch/o2switch-ssh-whitelist/index.live.php?r=list" \
+          login_code=$(
+            curl -s --max-time 45 -c "$cookie" -o "$login_body" -w '%{http_code}' \
+              --data-urlencode "user=${CPANEL_USER}" \
+              --data-urlencode "pass=${CPANEL_PASS}" \
+              -- "https://${CPANEL_HOST}:2083/login/?login_only=1" \
               2>"$err"
           )
-          curl_exit=$?
+          login_exit=$?
           set -e
-          CPANEL_HTTP_CODE="$http_code" CPANEL_CURL_EXIT="$curl_exit" \
-            python3 scripts/cpanel_auth_classify.py --body-file "$body"
-          rm -f "$body" "$err"
+          CPANEL_HTTP_CODE="$login_code" CPANEL_CURL_EXIT="$login_exit" \
+            python3 scripts/cpanel_auth_classify.py login \
+              --body-file "$login_body" \
+              --cookie-file "$cookie" \
+              --token-file "$token"
+
+          set +e
+          list_code=$(
+            curl -s --max-time 45 -b "$cookie" -o "$list_body" -w '%{http_code}' \
+              -- "https://${CPANEL_HOST}:2083$(cat "$token")/frontend/o2switch/o2switch-ssh-whitelist/index.live.php?r=list" \
+              2>"$err"
+          )
+          list_exit=$?
+          set -e
+          CPANEL_HTTP_CODE="$list_code" CPANEL_CURL_EXIT="$list_exit" \
+            python3 scripts/cpanel_auth_classify.py list --body-file "$list_body"
+          rm -f "$login_body" "$list_body" "$cookie" "$token" "$err"

@@ -1,42 +1,34 @@
-"""Classify a read-only cPanel whitelist response without echoing it."""
+"""Classify a read-only cPanel session without echoing tokens, cookies, or addresses."""
 
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
 TLS_EXITS = {35, 51, 58, 60, 77}
 TRANSPORT_EXITS = {6, 7, 28, 52, 56}
+TOKEN_PATTERN = re.compile(r"^/cpsess[0-9A-Za-z]+$")
 
 
-class Report:
-    def __init__(self, cpanel_http, body_kind, json_state, structure, authentication):
-        self.cpanel_http = cpanel_http
-        self.body_kind = body_kind
-        self.json_state = json_state
-        self.structure = structure
-        self.authentication = authentication
+def format_label(label):
+    return label + "\n"
 
 
-def _http_label(code):
-    if code == "200":
-        return "HTTP_OK"
-    if code == "401":
-        return "HTTP_UNAUTHORIZED"
-    if code == "403":
-        return "HTTP_FORBIDDEN"
-    if code == "404":
-        return "HTTP_NOT_FOUND"
-    if code == "429":
-        return "HTTP_TOO_MANY_REQUESTS"
-    if code.startswith("5") and len(code) == 3:
-        return "HTTP_SERVER_ERROR"
-    return "HTTP_OTHER"
+def _transport_label(http_code, curl_exit):
+    code = (http_code or "").strip()
+    if curl_exit in TLS_EXITS:
+        return "TLS_ERROR"
+    if curl_exit in TRANSPORT_EXITS or code in {"", "000"}:
+        return "HTTP_TRANSPORT_ERROR"
+    if curl_exit != 0 and not (code.isdigit() and len(code) == 3):
+        return "HTTP_TRANSPORT_ERROR"
+    return ""
 
 
-def _body_kind(body):
-    stripped = body.lstrip()
+def _payload(body):
+    stripped = (body or b"").lstrip()
     lowered = stripped[:16].lower()
     if lowered.startswith(b"<!doctype") or lowered.startswith(b"<html"):
         return "html", None
@@ -48,67 +40,93 @@ def _body_kind(body):
         return "other", None
 
 
-def _structure_ok(payload):
-    if not isinstance(payload, dict):
+def cookie_has_session(cookie_text):
+    if isinstance(cookie_text, bytes):
+        cookie_text = cookie_text.decode("utf-8", "replace")
+    for line in (cookie_text or "").splitlines():
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 6 and parts[5].strip():
+            return True
+    return False
+
+
+def _http_success(http_code):
+    code = (http_code or "").strip()
+    return len(code) == 3 and code.isdigit() and code.startswith("2")
+
+
+def diagnose_login(http_code, curl_exit, body, cookie_text):
+    transport = _transport_label(http_code, curl_exit)
+    if transport:
+        return transport, ""
+    if not _http_success(http_code):
+        return "SESSION_REJECTED", ""
+    kind, payload = _payload(body)
+    token = ""
+    status_ok = False
+    if kind == "json" and isinstance(payload, dict):
+        status_ok = payload.get("status") == 1
+        raw_token = payload.get("security_token")
+        if isinstance(raw_token, str):
+            token = raw_token.strip()
+    if (
+        status_ok
+        and TOKEN_PATTERN.match(token)
+        and cookie_has_session(cookie_text)
+    ):
+        return "SESSION_ACCEPTED", token
+    return "SESSION_REJECTED", ""
+
+
+def _whitelist_ok(payload):
+    if not isinstance(payload, dict) or payload.get("success") is not True:
         return False
     data = payload.get("data")
-    return (
-        isinstance(payload.get("success"), bool)
-        and isinstance(data, dict)
-        and isinstance(data.get("list"), list)
-    )
+    return isinstance(data, dict) and isinstance(data.get("list"), list)
 
 
-def classify(http_code, curl_exit, body):
-    code = (http_code or "").strip()
-    if curl_exit in TLS_EXITS:
-        label = "TLS_ERROR"
-    elif code.isdigit() and len(code) == 3 and code != "000":
-        label = _http_label(code)
-    elif curl_exit in TRANSPORT_EXITS or code in {"", "000"} or curl_exit != 0:
-        label = "HTTP_TRANSPORT"
-    else:
-        label = "HTTP_OTHER"
-
-    kind, payload = _body_kind(body or b"")
-    json_state = "valid" if kind == "json" else "invalid"
-    structure = "ok" if kind == "json" and _structure_ok(payload) else "mismatch"
-    if label != "HTTP_OK":
-        authentication = "not_applicable"
-    elif (
-        kind == "json"
-        and structure == "ok"
-        and payload.get("success") is True
-    ):
-        authentication = "accepted"
-    else:
-        authentication = "rejected"
-    return Report(label, kind, json_state, structure, authentication)
-
-
-def format_report(report):
-    if report.cpanel_http == "TLS_ERROR":
-        return "cpanel_http=TLS_ERROR\n"
-    lines = [
-        "cpanel_http={0}".format(report.cpanel_http),
-        "body_kind={0}".format(report.body_kind),
-        "json={0}".format(report.json_state),
-        "structure={0}".format(report.structure),
-        "authentication={0}".format(report.authentication),
-    ]
-    return "\n".join(lines) + "\n"
+def diagnose_list(http_code, curl_exit, body):
+    transport = _transport_label(http_code, curl_exit)
+    if transport:
+        return transport
+    if not _http_success(http_code):
+        return "WHITELIST_READ_FAILED"
+    kind, payload = _payload(body)
+    if kind != "json":
+        return "INVALID_RESPONSE"
+    if _whitelist_ok(payload):
+        return "WHITELIST_READ_OK"
+    return "WHITELIST_READ_FAILED"
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
+    parser.add_argument("phase", choices=("login", "list"))
     parser.add_argument("--body-file", required=True)
+    parser.add_argument("--cookie-file")
+    parser.add_argument("--token-file")
     args = parser.parse_args(argv)
     http_code = os.environ.get("CPANEL_HTTP_CODE", "")
     curl_exit = int(os.environ.get("CPANEL_CURL_EXIT", "0"))
     body = Path(args.body_file).read_bytes()
-    report = classify(http_code, curl_exit, body)
-    sys.stdout.write(format_report(report))
-    if report.authentication == "accepted":
+    if args.phase == "login":
+        cookie_text = ""
+        if args.cookie_file:
+            cookie_text = Path(args.cookie_file).read_text(encoding="utf-8", errors="replace")
+        label, token = diagnose_login(http_code, curl_exit, body, cookie_text)
+        sys.stdout.write(format_label(label))
+        if label == "SESSION_ACCEPTED" and args.token_file:
+            path = Path(args.token_file)
+            descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                handle.write(token)
+            return 0
+        return 1
+    label = diagnose_list(http_code, curl_exit, body)
+    sys.stdout.write(format_label(label))
+    if label == "WHITELIST_READ_OK":
         return 0
     return 1
 

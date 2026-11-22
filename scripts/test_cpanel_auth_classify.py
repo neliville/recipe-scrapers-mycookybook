@@ -1,4 +1,4 @@
-"""Simulated responses for the read-only cPanel whitelist diagnostic."""
+"""Simulated cPanel session responses. Reports must not echo secrets or addresses."""
 
 import json
 import unittest
@@ -12,12 +12,23 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "cpanel-auth-check.yml"
 FAKE_IP = "203.0.113.50"
 MARKER = "NOT-A-SECRET-MARKER"
+TOKEN = "/cpsessTESTTOKEN"
+COOKIE = ".example.test\tTRUE\t/\tTRUE\t0\tsession\tvalue\n"
 
 
-def report(http_code, body, curl_exit=0):
+def login_report(http_code, body, curl_exit=0, cookie=COOKIE):
     if isinstance(body, str):
         body = body.encode()
-    return diag.format_report(diag.classify(http_code, curl_exit, body))
+    label, token = diag.diagnose_login(http_code, curl_exit, body, cookie)
+    text = diag.format_label(label)
+    return text, token
+
+
+def list_report(http_code, body, curl_exit=0):
+    if isinstance(body, str):
+        body = body.encode()
+    label = diag.diagnose_list(http_code, curl_exit, body)
+    return diag.format_label(label)
 
 
 def assert_safe(test, text, *forbidden):
@@ -25,94 +36,80 @@ def assert_safe(test, text, *forbidden):
         test.assertNotIn(item, text)
 
 
-class ClassifyTests(unittest.TestCase):
-    def test_successful_authentication(self):
+class SessionTests(unittest.TestCase):
+    def test_session_accepted(self):
+        body = json.dumps({"status": 1, "security_token": TOKEN})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_ACCEPTED", text)
+        self.assertEqual(token, TOKEN)
+        assert_safe(self, text, TOKEN, "200", MARKER)
+
+    def test_wrong_password(self):
+        body = json.dumps({"status": 0, "message": MARKER})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_REJECTED", text)
+        self.assertEqual(token, "")
+        self.assertNotIn("SESSION_ACCEPTED", text)
+        assert_safe(self, text, MARKER, "200")
+
+    def test_missing_cookie(self):
+        body = json.dumps({"status": 1, "security_token": TOKEN})
+        text, token = login_report("200", body, cookie="")
+        self.assertIn("SESSION_REJECTED", text)
+        self.assertEqual(token, "")
+        assert_safe(self, text, TOKEN)
+
+    def test_missing_security_token(self):
+        body = json.dumps({"status": 1, "security_token": ""})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_REJECTED", text)
+        self.assertEqual(token, "")
+
+    def test_expired_session_returns_html(self):
+        text = list_report(
+            "200",
+            "<!DOCTYPE html><html><title>Identifiant cPanel</title>{0}</html>".format(FAKE_IP),
+        )
+        self.assertIn("INVALID_RESPONSE", text)
+        self.assertNotIn("WHITELIST_READ_OK", text)
+        assert_safe(self, text, FAKE_IP, "Identifiant", "<html", "200")
+
+    def test_tls_error(self):
+        text, token = login_report("000", b"", curl_exit=60, cookie="")
+        self.assertIn("TLS_ERROR", text)
+        self.assertEqual(token, "")
+        assert_safe(self, text, "60", "000", "SESSION_ACCEPTED")
+
+    def test_timeout(self):
+        text = list_report("000", b"", curl_exit=28)
+        self.assertIn("HTTP_TRANSPORT_ERROR", text)
+        assert_safe(self, text, "28", "000")
+
+    def test_http_error(self):
+        text = list_report("503", "unavailable")
+        self.assertIn("WHITELIST_READ_FAILED", text)
+        assert_safe(self, text, "503", "500", "unavailable")
+
+    def test_whitelist_read_ok_hides_addresses(self):
         body = json.dumps(
             {
                 "success": True,
                 "data": {
                     "ip": FAKE_IP,
                     "count": 1,
-                    "list": [
-                        {
-                            "address": FAKE_IP,
-                            "direction": "in",
-                            "port": 22,
-                            "updateDate": "22/11/2026",
-                        }
-                    ],
+                    "list": [{"address": FAKE_IP, "direction": "in", "port": 22}],
                 },
             }
         )
-        text = report("200", body)
-        self.assertIn("cpanel_http=HTTP_OK", text)
-        self.assertIn("body_kind=json", text)
-        self.assertIn("json=valid", text)
-        self.assertIn("structure=ok", text)
-        self.assertIn("authentication=accepted", text)
-        assert_safe(self, text, "200", FAKE_IP, MARKER)
+        text = list_report("200", body)
+        self.assertIn("WHITELIST_READ_OK", text)
+        assert_safe(self, text, FAKE_IP, "200")
 
-    def test_rejected_credentials(self):
-        text = report("401", f"<html><title>Identifiant cPanel</title>{MARKER}</html>", 0)
-        self.assertIn("cpanel_http=HTTP_UNAUTHORIZED", text)
-        self.assertIn("body_kind=html", text)
-        self.assertIn("authentication=not_applicable", text)
-        assert_safe(self, text, "401", MARKER, "Identifiant")
-
-    def test_html_login_page_on_http_success(self):
-        text = report(
-            "200",
-            f"<!DOCTYPE html><html><title>Identifiant cPanel</title>{FAKE_IP}</html>",
-        )
-        self.assertIn("cpanel_http=HTTP_OK", text)
-        self.assertIn("body_kind=html", text)
-        self.assertIn("json=invalid", text)
-        self.assertIn("authentication=rejected", text)
-        assert_safe(self, text, "200", FAKE_IP, "Identifiant", "<html")
-
-    def test_forbidden(self):
-        text = report("403", "Access denied")
-        self.assertIn("cpanel_http=HTTP_FORBIDDEN", text)
-        assert_safe(self, text, "403", "Access denied")
-
-    def test_not_found(self):
-        text = report("404", "missing")
-        self.assertIn("cpanel_http=HTTP_NOT_FOUND", text)
-        assert_safe(self, text, "404", "missing")
-
-    def test_too_many_requests(self):
-        text = report("429", "slow down")
-        self.assertIn("cpanel_http=HTTP_TOO_MANY_REQUESTS", text)
-        assert_safe(self, text, "429", "slow down")
-
-    def test_server_error(self):
-        text = report("503", "unavailable")
-        self.assertIn("cpanel_http=HTTP_SERVER_ERROR", text)
-        assert_safe(self, text, "503", "500", "unavailable")
-
-    def test_tls_error(self):
-        text = report("000", b"", curl_exit=60)
-        self.assertIn("cpanel_http=TLS_ERROR", text)
-        assert_safe(self, text, "60", "000", "HTTP_TRANSPORT")
-
-    def test_network_timeout(self):
-        text = report("000", b"", curl_exit=28)
-        self.assertIn("cpanel_http=HTTP_TRANSPORT", text)
-        assert_safe(self, text, "28", "000")
-
-    def test_invalid_json(self):
-        text = report("200", "{not-json")
-        self.assertIn("cpanel_http=HTTP_OK", text)
-        self.assertIn("json=invalid", text)
-        self.assertIn("body_kind=other", text)
-        self.assertIn("authentication=rejected", text)
-        assert_safe(self, text, "200", "{not-json")
-
-    def test_business_failure_is_not_accepted(self):
+    def test_business_failure(self):
         body = json.dumps({"success": False, "message": MARKER, "data": {"list": []}})
-        text = report("200", body)
-        self.assertIn("authentication=rejected", text)
-        self.assertNotIn("authentication=accepted", text)
+        text = list_report("200", body)
+        self.assertIn("WHITELIST_READ_FAILED", text)
+        self.assertNotIn("WHITELIST_READ_OK", text)
         assert_safe(self, text, MARKER)
 
 
@@ -121,25 +118,29 @@ class WorkflowContractTests(unittest.TestCase):
         text = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("ci/cpanel-auth-check", text)
         self.assertIn("contents: read", text)
+        self.assertIn("login_only=1", text)
+        self.assertIn("r=list", text)
+        self.assertIn("chmod 600", text)
+        self.assertIn("secrets.O2SWITCH_CPANEL_HOST", text)
+        self.assertIn("O2SWITCH_USER", text)
+        self.assertIn("O2SWITCH_CPANEL_PASSWORD", text)
+        self.assertIn("rm -f", text)
         self.assertNotIn("workflow_dispatch", text)
         self.assertNotIn("develop", text)
         self.assertNotIn("main", text)
         self.assertNotIn("r=add", text)
         self.assertNotIn("r=remove", text)
         self.assertNotIn("appleboy/ssh-action", text)
+        self.assertNotIn("deploy-staging", text)
         self.assertNotIn("--insecure", text)
         self.assertNotIn("ACTIONS_STEP_DEBUG", text)
         self.assertNotIn("-k", text)
         self.assertNotIn("--verbose", text)
         self.assertNotIn("curl -v", text)
-        self.assertIn("r=list", text)
-        self.assertIn("secrets.O2SWITCH_CPANEL_HOST", text)
+        self.assertNotIn("--user", text)
         self.assertNotIn("secrets.O2SWITCH_HOST", text)
         self.assertNotIn("odns.fr", text)
         self.assertNotIn("o2switch.net", text)
-        self.assertIn("O2SWITCH_USER", text)
-        self.assertIn("O2SWITCH_CPANEL_PASSWORD", text)
-        self.assertIn("rm -f", text)
 
     def test_workflow_yaml_parses(self):
         data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
