@@ -19,8 +19,8 @@ COOKIE = ".example.test\tTRUE\t/\tTRUE\t0\tsession\tvalue\n"
 def login_report(http_code, body, curl_exit=0, cookie=COOKIE):
     if isinstance(body, str):
         body = body.encode()
-    label, token = diag.diagnose_login(http_code, curl_exit, body, cookie)
-    text = diag.format_label(label)
+    label, token, cookie_state = diag.diagnose_login(http_code, curl_exit, body, cookie)
+    text = diag.format_label(label, cookie_state)
     return text, token
 
 
@@ -37,42 +37,71 @@ def assert_safe(test, text, *forbidden):
 
 
 class SessionTests(unittest.TestCase):
-    def test_session_accepted(self):
+    def test_httponly_cookie_is_recognized(self):
+        jar = (
+            "# Netscape HTTP Cookie File\n"
+            "#HttpOnly_.example.test\tTRUE\t/\tTRUE\t0\tcpsession\tsecretvalue\n"
+        )
+        self.assertTrue(diag.cookie_has_session(jar))
         body = json.dumps({"status": 1, "security_token": TOKEN})
-        text, token = login_report("200", body)
+        text, token = login_report("200", body, cookie=jar)
         self.assertIn("SESSION_ACCEPTED", text)
+        self.assertIn("cookie=present", text)
         self.assertEqual(token, TOKEN)
-        assert_safe(self, text, TOKEN, "200", MARKER)
+        assert_safe(self, text, "secretvalue", "cpsession", TOKEN, "#HttpOnly_")
 
-    def test_wrong_password(self):
-        body = json.dumps({"status": 0, "message": MARKER})
-        text, token = login_report("200", body)
-        self.assertIn("SESSION_REJECTED", text)
-        self.assertEqual(token, "")
-        self.assertNotIn("SESSION_ACCEPTED", text)
-        assert_safe(self, text, MARKER, "200")
+    def test_ordinary_comment_is_ignored(self):
+        self.assertFalse(diag.cookie_has_session("# Netscape HTTP Cookie File\n# comment\n"))
 
-    def test_missing_cookie(self):
+    def test_malformed_cookie_is_ignored(self):
+        self.assertFalse(diag.cookie_has_session("only-one-field\n"))
+        self.assertFalse(diag.cookie_has_session(".example.test\tTRUE\t/\tTRUE\t0\tname\n"))
+
+    def test_session_accepted_without_cookie(self):
         body = json.dumps({"status": 1, "security_token": TOKEN})
         text, token = login_report("200", body, cookie="")
-        self.assertIn("SESSION_REJECTED", text)
+        self.assertIn("SESSION_ACCEPTED", text)
+        self.assertIn("cookie=absent", text)
+        self.assertEqual(token, TOKEN)
+        assert_safe(self, text, TOKEN, "200")
+
+    def test_status_not_one(self):
+        body = json.dumps({"status": 0, "message": MARKER, "security_token": TOKEN})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_STATUS_REJECTED", text)
         self.assertEqual(token, "")
-        assert_safe(self, text, TOKEN)
+        self.assertNotIn("SESSION_ACCEPTED", text)
+        assert_safe(self, text, MARKER, TOKEN, "200")
 
     def test_missing_security_token(self):
         body = json.dumps({"status": 1, "security_token": ""})
         text, token = login_report("200", body)
-        self.assertIn("SESSION_REJECTED", text)
+        self.assertIn("SESSION_TOKEN_ABSENT", text)
         self.assertEqual(token, "")
 
-    def test_expired_session_returns_html(self):
-        text = list_report(
+    def test_unexpected_token_format(self):
+        body = json.dumps({"status": 1, "security_token": "/cpsessOK.extra"})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_TOKEN_INVALID", text)
+        self.assertEqual(token, "")
+        assert_safe(self, text, "/cpsessOK.extra")
+
+    def test_token_injection_is_rejected(self):
+        hostile = "/cpsessOK\r\nhttps://evil.example/path"
+        body = json.dumps({"status": 1, "security_token": hostile})
+        text, token = login_report("200", body)
+        self.assertIn("SESSION_TOKEN_INVALID", text)
+        self.assertEqual(token, "")
+        assert_safe(self, text, hostile, "evil.example")
+
+    def test_html_response(self):
+        text, token = login_report(
             "200",
-            "<!DOCTYPE html><html><title>Identifiant cPanel</title>{0}</html>".format(FAKE_IP),
+            "<!DOCTYPE html><html><title>Identifiant cPanel</title>{0}</html>".format(MARKER),
         )
         self.assertIn("INVALID_RESPONSE", text)
-        self.assertNotIn("WHITELIST_READ_OK", text)
-        assert_safe(self, text, FAKE_IP, "Identifiant", "<html", "200")
+        self.assertEqual(token, "")
+        assert_safe(self, text, MARKER, "Identifiant", "<html", "200")
 
     def test_tls_error(self):
         text, token = login_report("000", b"", curl_exit=60, cookie="")
@@ -85,7 +114,7 @@ class SessionTests(unittest.TestCase):
         self.assertIn("HTTP_TRANSPORT_ERROR", text)
         assert_safe(self, text, "28", "000")
 
-    def test_http_error(self):
+    def test_list_failure(self):
         text = list_report("503", "unavailable")
         self.assertIn("WHITELIST_READ_FAILED", text)
         assert_safe(self, text, "503", "500", "unavailable")

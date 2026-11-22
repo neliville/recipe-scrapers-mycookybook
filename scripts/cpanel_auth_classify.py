@@ -12,7 +12,9 @@ TRANSPORT_EXITS = {6, 7, 28, 52, 56}
 TOKEN_PATTERN = re.compile(r"^/cpsess[0-9A-Za-z]+$")
 
 
-def format_label(label):
+def format_label(label, cookie_state=""):
+    if label == "SESSION_ACCEPTED" and cookie_state in {"present", "absent"}:
+        return "SESSION_ACCEPTED\ncookie={0}\n".format(cookie_state)
     return label + "\n"
 
 
@@ -43,11 +45,19 @@ def _payload(body):
 def cookie_has_session(cookie_text):
     if isinstance(cookie_text, bytes):
         cookie_text = cookie_text.decode("utf-8", "replace")
-    for line in (cookie_text or "").splitlines():
-        if not line or line.startswith("#"):
+    for raw_line in (cookie_text or "").splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("#HttpOnly_"):
+            line = line[len("#HttpOnly_"):]
+        elif line.startswith("#"):
             continue
         parts = line.split("\t")
-        if len(parts) >= 6 and parts[5].strip():
+        if len(parts) < 7:
+            continue
+        domain, _flag, path, _secure, _expires, name, value = parts[:7]
+        if domain.strip() and path.strip() and name.strip() and value.strip():
             return True
     return False
 
@@ -58,26 +68,24 @@ def _http_success(http_code):
 
 
 def diagnose_login(http_code, curl_exit, body, cookie_text):
+    cookie_state = "present" if cookie_has_session(cookie_text) else "absent"
     transport = _transport_label(http_code, curl_exit)
     if transport:
-        return transport, ""
+        return transport, "", ""
     if not _http_success(http_code):
-        return "SESSION_REJECTED", ""
+        return "INVALID_RESPONSE", "", ""
     kind, payload = _payload(body)
-    token = ""
-    status_ok = False
-    if kind == "json" and isinstance(payload, dict):
-        status_ok = payload.get("status") == 1
-        raw_token = payload.get("security_token")
-        if isinstance(raw_token, str):
-            token = raw_token.strip()
-    if (
-        status_ok
-        and TOKEN_PATTERN.match(token)
-        and cookie_has_session(cookie_text)
-    ):
-        return "SESSION_ACCEPTED", token
-    return "SESSION_REJECTED", ""
+    if kind != "json" or not isinstance(payload, dict):
+        return "INVALID_RESPONSE", "", ""
+    if payload.get("status") != 1:
+        return "SESSION_STATUS_REJECTED", "", ""
+    raw_token = payload.get("security_token")
+    token = raw_token.strip() if isinstance(raw_token, str) else ""
+    if not token:
+        return "SESSION_TOKEN_ABSENT", "", ""
+    if TOKEN_PATTERN.fullmatch(token) is None:
+        return "SESSION_TOKEN_INVALID", "", ""
+    return "SESSION_ACCEPTED", token, cookie_state
 
 
 def _whitelist_ok(payload):
@@ -115,8 +123,8 @@ def main(argv=None):
         cookie_text = ""
         if args.cookie_file:
             cookie_text = Path(args.cookie_file).read_text(encoding="utf-8", errors="replace")
-        label, token = diagnose_login(http_code, curl_exit, body, cookie_text)
-        sys.stdout.write(format_label(label))
+        label, token, cookie_state = diagnose_login(http_code, curl_exit, body, cookie_text)
+        sys.stdout.write(format_label(label, cookie_state))
         if label == "SESSION_ACCEPTED" and args.token_file:
             path = Path(args.token_file)
             descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
