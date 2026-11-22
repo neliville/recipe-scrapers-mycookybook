@@ -119,7 +119,19 @@ Les trois éléments se complètent. `.gitattributes` est la protection la plus 
 
 ---
 
-## 8. Vérification post-ajout
+## 8. Fixtures `*.testhtml` après la synchro 15.14.0
+
+Le merge `upstream/main` (`d559c5e7`) a laissé **86** fichiers `tests/test_data/**/*.testhtml` dont le blob contient des retours chariot. `.gitattributes` déclare `*.testhtml text eol=lf`, et la configuration locale est `core.autocrlf=input` avec `core.eol=lf`.
+
+Conséquence : `git status` peut les afficher comme modifiés alors que le fichier sur disque est **identique au blob** de HEAD. Un `git add` les convertirait en LF et créerait un commit de renormalisation. Ce commit n'a pas été fait : il modifierait des fixtures upstream sans changement de contenu.
+
+À conserver :
+
+- ne pas `git add` ces `*.testhtml` tant que le diff, une fois les CR ignorés, est vide ;
+- ne pas lancer de renormalisation massive ;
+- vérifier un commit avec `git diff --cached --name-only` avant de le publier.
+
+## 9. Vérification post-ajout
 
 ```bash
 # Attribut appliqué
