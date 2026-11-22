@@ -19,7 +19,7 @@ jobs:
 
       - name: List whitelist
         env:
-          CPANEL_HOST: ${{ secrets.O2SWITCH_HOST }}
+          CPANEL_HOST: ${{ secrets.O2SWITCH_CPANEL_HOST }}
           CPANEL_USER: ${{ secrets.O2SWITCH_USER }}
           CPANEL_PASS: ${{ secrets.O2SWITCH_CPANEL_PASSWORD }}
         run: |
